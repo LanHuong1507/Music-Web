@@ -40,7 +40,7 @@
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
-            
+
         </nav>
     </header>
 
@@ -63,69 +63,296 @@
             <li><a href="#">Top Charts</a></li>
             <li><a href="#">Albums</a></li>
             <li><a href="#" class="btn login">
-                <i class="fas fa-user"></i> Log In
-            </a></li>
+                    <i class="fas fa-user"></i> Log In
+                </a></li>
         </ul>
     </div>
-    <section class="music-carousel">
-        <div class="carousel-container">
-            <div class="carousel-slide">
-                <img src="assets/img/carousel-slide-1.jpg" alt="">
-            </div>
-            <div class="carousel-slide">
-                <img src="assets/img/carousel-slide-2.jpg" alt="">
-            </div>
-            <div class="carousel-slide">
-                <img src="assets/img/carousel-slide-3.jpg" alt="">
-            </div>
-            <div class="carousel-slide">
-                <img src="assets/img/carousel-slide-4.jpg" alt="">
-            </div>
-            <div class="carousel-slide">
-                <img src="assets/img/carousel-slide-5.jpg" alt="">
-            </div>
-        </div>
-        <button class="prev-button">‹</button>
-        <button class="next-button">›</button>
-        <div class="carousel-dots"></div>
-    </section>
-    
-    <script src="script.js"></script>
-</body>
-<footer class="music-footer">
-    <div class="footer-top">
-        <div class="footer-left">
-            <div class="footer-logo">
-                <img src="assets/img/logo.jpg" alt="Music Is Life Logo">
-            </div>
-            <h3>Stay Connected</h3>
-            <ul class="social-media">
-                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-            </ul>
-        </div>
-        <div class="footer-center">
-            <h3>Newsletter</h3>
-            <form class="newsletter-form">
-                <input type="email" placeholder="Your email address" required>
-                <button type="submit">Subscribe</button>
-            </form>
-        </div>
-        <div class="footer-right">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms of Service</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2024 Music Is Life. All rights reserved.</p>
-    </div>
-</footer>
+    <!DOCTYPE html>
+    <html lang="en">
 
-</html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Music Webpage with Tabs</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <!DOCTYPE html>
+        <html lang="en">
+
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Music Webpage with Tabs</title>
+            <link rel="stylesheet" href="style.css">
+        </head>
+
+        <body>
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Discover Your Next Favorite Track</h1>
+                    <p>Explore the best in music with curated playlists and trending hits. Stay tuned for the latest
+                        releases and enjoy a personalized experience.</p>
+                    <button class="cta-button">Explore Now</button>
+                </div>
+                <div class="hero-sidebar-tabs">
+                    <div class="tab-navigation">
+                        <button id="prev-btn-tab">&lt; Previous</button>
+                        <h2 id="tab-name">Most Listened</h2>
+                        <button id="next-btn-tab">Next &gt;</button>
+                    </div>
+                    <div id="most-listened" class="tab-content active">
+                        <h2>Most Listened</h2>
+                        <ul class="music-list">
+                            <li>
+                                <div class="track-item">
+                                    <img src="assets/img/tzuyu.jpg_large" alt="Track 1 Image" class="track-image">
+                                    <a href="#" class="track-link" data-audio="assets/songs/runaway_tzuyu.mp3"
+                                        data-image="assets/img/tzuyu.jpg_large">Run Away - Tzuyu (TWICE)</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="track-item">
+                                    <img src="assets/img/nayeon.jpg" alt="Track 2 Image" class="track-image">
+                                    <a href="#" class="track-link" data-audio="assets/songs/pop.mp3"
+                                        data-image="assets/img/nayeon.jpg">POP! - Nayeon (TWICE)</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="track-item">
+                                    <img src="assets/img/twice.jpg" alt="Track 1 Image" class="track-image">
+                                    <a href="#" class="track-link" data-audio="assets/songs/cheerup.mp3"
+                                        data-image="assets/img/twice.jpg">Cheer Up - TWICE</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="most-favorite" class="tab-content">
+                        <h2>Most Favorite</h2>
+                        <ul class="music-list">
+                            <li>
+                                <div class="track-item">
+                                    <img src="assets/img/nayeon.jpg" alt="Track 2 Image" class="track-image">
+                                    <a href="#" class="track-link" data-audio="assets/songs/pop.mp3"
+                                        data-image="assets/img/nayeon.jpg">POP! - Nayeon (TWICE)</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="track-item">
+                                    <img src="assets/img/nayeon.jpg" alt="Track 2 Image" class="track-image">
+                                    <a href="#" class="track-link" data-audio="assets/songs/abcd.mp3"
+                                        data-image="assets/img/nayeon.jpg">ABCD - Nayeon (TWICE)</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="track-item">
+                                    <img src="assets/img/tzuyu.jpg_large" alt="Track 1 Image" class="track-image">
+                                    <a href="#" class="track-link" data-audio="assets/songs/132.mp3"
+                                        data-image="assets/img/tzuyu.jpg_large">1 3 2 - Jungyeon,Mina,Tzuyu (TWICE)</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="new-releases" class="tab-content">
+                        <h2>New Releases</h2>
+                        <ul class="music-list">
+                            <li>
+                                <div class="track-item">
+                                    <img src="assets/img/tzuyu.jpg_large" alt="Track 1 Image" class="track-image">
+                                    <a href="#" class="track-link" data-audio="assets/songs/runaway_tzuyu.mp3"
+                                        data-image="assets/img/tzuyu.jpg_large">Run Away - Tzuyu (TWICE)</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="track-item">
+                                    <img src="assets/img/tzuyu.jpg_large" alt="Track 1 Image" class="track-image">
+                                    <a href="#" class="track-link" data-audio="assets/songs/runaway_tzuyu.mp3"
+                                        data-image="assets/img/tzuyu.jpg_large">Run Away - Tzuyu (TWICE)</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="track-item">
+                                    <img src="assets/img/tzuyu.jpg_large" alt="Track 1 Image" class="track-image">
+                                    <a href="#" class="track-link" data-audio="assets/songs/runaway_tzuyu.mp3"
+                                        data-image="assets/img/tzuyu.jpg_large">Run Away - Tzuyu (TWICE)</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="top-rated" class="tab-content">
+                        <h2>Top Rated</h2>
+                        <ul class="music-list">
+                            <li>
+                                <div class="track-item">
+                                    <img src="assets/img/tzuyu.jpg_large" alt="Track 1 Image" class="track-image">
+                                    <a href="#" class="track-link" data-audio="assets/songs/hih.mp3"
+                                        data-image="assets/img/tzuyu.jpg_large">HEARTBREAK IN HEAVEN - Tzuyu (TWICE)</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="track-item">
+                                    <img src="assets/img/tzuyu.jpg_large" alt="Track 1 Image" class="track-image">
+                                    <a href="#" class="track-link" data-audio="assets/songs/runaway_tzuyu.mp3"
+                                        data-image="assets/img/tzuyu.jpg_large">Run Away - Tzuyu (TWICE)</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="track-item">
+                                    <img src="assets/img/tzuyu.jpg_large" alt="Track 1 Image" class="track-image">
+                                    <a href="#" class="track-link" data-audio="assets/songs/runaway_tzuyu.mp3"
+                                        data-image="assets/img/tzuyu.jpg_large">Run Away - Tzuyu (TWICE)</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="top-artist" class="tab-content">
+                        <h2>Top Artist</h2>
+                        <ul class="music-list">
+                            <li>
+                                <div class="track-item">
+                                    <img src="assets/img/twice.jpg" alt="Track 1 Image" class="track-image">
+                                    <a href="#" class="track-link" data-audio="assets/songs/feelspecial.mp3"
+                                        data-image="assets/img/twice.jpg">Feel Special -TWICE</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="track-item">
+                                    <img src="assets/img/twice.jpg" alt="Track 1 Image" class="track-image">
+                                    <a href="#" class="track-link" data-audio="assets/songs/yesoryes.mp3"
+                                        data-image="assets/img/twice.jpg">YES OR YES - TWICE</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="track-item">
+                                    <img src="assets/img/twice.jpg" alt="Track 1 Image" class="track-image">
+                                    <a href="#" class="track-link" data-audio="assets/songs/cheerup.mp3"
+                                        data-image="assets/img/twice.jpg">CHEER UP - TWICE</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="top-rated" class="tab-content">
+                        <h2>Top Rated</h2>
+                        <ul class="music-list">
+                            <li>
+                                <div class="track-item">
+                                    <img src="assets/img/tzuyu.jpg_large" alt="Track 1 Image" class="track-image">
+                                    <a href="#" class="track-link" data-audio="assets/songs/runaway_tzuyu.mp3"
+                                        data-image="assets/img/tzuyu.jpg_large">Run Away - Tzuyu (TWICE)</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="track-item">
+                                    <img src="assets/img/tzuyu.jpg_large" alt="Track 1 Image" class="track-image">
+                                    <a href="#" class="track-link" data-audio="assets/songs/runaway_tzuyu.mp3"
+                                        data-image="assets/img/tzuyu.jpg_large">Run Away - Tzuyu (TWICE)</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="track-item">
+                                    <img src="assets/img/tzuyu.jpg_large" alt="Track 1 Image" class="track-image">
+                                    <a href="#" class="track-link" data-audio="assets/songs/runaway_tzuyu.mp3"
+                                        data-image="assets/img/tzuyu.jpg_large">Run Away - Tzuyu (TWICE)</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="top-rated" class="tab-content">
+                        <h2>Top Rated</h2>
+                        <ul class="music-list">
+                            <li>
+                                <div class="track-item">
+                                    <img src="assets/img/tzuyu.jpg_large" alt="Track 1 Image" class="track-image">
+                                    <a href="#" class="track-link" data-audio="assets/songs/runaway_tzuyu.mp3"
+                                        data-image="assets/img/tzuyu.jpg_large">Run Away - Tzuyu (TWICE)</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="track-item">
+                                    <img src="assets/img/tzuyu.jpg_large" alt="Track 1 Image" class="track-image">
+                                    <a href="#" class="track-link" data-audio="assets/songs/runaway_tzuyu.mp3"
+                                        data-image="assets/img/tzuyu.jpg_large">Run Away - Tzuyu (TWICE)</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="track-item">
+                                    <img src="assets/img/tzuyu.jpg_large" alt="Track 1 Image" class="track-image">
+                                    <a href="#" class="track-link" data-audio="assets/songs/runaway_tzuyu.mp3"
+                                        data-image="assets/img/tzuyu.jpg_large">Run Away - Tzuyu (TWICE)</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div id="player-controls">
+                        <button id="prev-btn" class="control-btn">
+                            <i class="fa fa-backward"></i>
+                        </button>
+                        <button id="play-btn" class="control-btn">
+                            <i class="fa fa-play"></i>
+                        </button>
+                        <button id="pause-btn" class="control-btn">
+                            <i class="fa fa-pause"></i>
+                        </button>
+                        <button id="next-btn" class="control-btn">
+                            <i class="fa fa-forward"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </section>
+            <div id="bottom-player" class="bottom-player">
+                <img id="bottom-track-image" src="assets/img/default-user.webp" alt="Track Image"
+                    class="bottom-track-image">
+                <div class="track-info">
+                    <h3 id="bottom-track-title">No track playing</h3>
+                    <div class="controls">
+                        <span id="playback-time">0:00</span> / <span id="total-duration">0:00</span>
+                        <div class="progress-bar-container">
+                            <div id="progress-bar" class="progress-bar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="music-footer">
+                <div class="footer-top">
+                    <div class="footer-left">
+                        <div class="footer-logo">
+                            <img src="assets/img/logo.jpg" alt="Music Is Life Logo">
+                        </div>
+                        <h3>Stay Connected</h3>
+                        <ul class="social-media">
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-center">
+                        <h3>Newsletter</h3>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your email address" required>
+                            <button type="submit">Subscribe</button>
+                        </form>
+                    </div>
+                    <div class="footer-right">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 Music Is Life. All rights reserved.</p>
+                </div>
+            </footer>
+
+            <script src="script.js"></script>
+        </body>
+
+
+        </html>
