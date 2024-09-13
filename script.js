@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
 /*Tab Navigation */
 let currentTab = 0;
 const tabs = document.querySelectorAll('.tab-content');
-const tabNames = ['Most Listened', 'Most Favorite', 'New Releases', 'Top Rated','Top Artists'];
+const tabNames = ['Most Listened', 'Most Favorite', 'New Releases', 'Top Rated', 'Top Artists'];
 const tabNameDisplay = document.getElementById('tab-name');
 
 document.getElementById('next-btn-tab').addEventListener('click', () => {
@@ -133,19 +133,41 @@ function showTab(index) {
     } else {
         currentTab = index;
     }
-
-    // Hide all tabs
     tabs.forEach(tab => tab.classList.remove('active'));
 
-    // Show the current tab
+
     tabs[currentTab].classList.add('active');
 
-    // Update the tab name display
+
     tabNameDisplay.textContent = tabNames[currentTab];
 }
-
-// Initialize the first tab as active and display its name
 document.addEventListener('DOMContentLoaded', () => {
     showTab(currentTab);
 });
 
+/*Music Genres*/
+document.addEventListener('DOMContentLoaded', () => {
+    const loadMoreButton = document.getElementById('load-more');
+    let hiddenGenres = document.querySelectorAll('.genre-item.hidden');
+
+    let visibleCount = 3;
+
+    function updateLoadMoreButton() {
+        hiddenGenres = document.querySelectorAll('.genre-item.hidden');
+        if (hiddenGenres.length === 0) {
+            loadMoreButton.style.display = 'none';
+        } else {
+            loadMoreButton.style.display = 'inline-block';
+        }
+    }
+
+    loadMoreButton.addEventListener('click', () => {
+        const genresToShow = Array.from(hiddenGenres).slice(0, visibleCount);
+        genresToShow.forEach(genre => {
+            genre.classList.remove('hidden');
+        });
+
+        updateLoadMoreButton();
+    });
+    updateLoadMoreButton();
+});
