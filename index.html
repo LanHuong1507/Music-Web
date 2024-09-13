@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUSIC IS LIFE</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-left">
+                <div class="logo">
+                    <img src="assets/img/logo.jpg" alt="Logo">
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Discover</a></li>
+                    <li><a href="#">Top Charts</a></li>
+                    <li><a href="#">Albums</a></li>
+                </ul>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search songs, artists, albums...">
+                <button type="submit">Search</button>
+            </div>
+            <div class="auth-buttons">
+                <a href="#" class="btn login">
+                    <i class="fas fa-user"></i> Log In
+                </a>
+            </div>
+            <div class="mobile-menu-header">
+                <div class="logo">
+                    <img src="assets/img/logo.jpg" alt="Logo">
+                </div>
+                <button id="mobile-menu-btn" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+        </nav>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-header">
+            <div class="logo">
+                <img src="assets/img/logo.jpg" alt="Logo">
+            </div>
+            <button id="mobile-menu-close" aria-label="Close mobile menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="search-bar-mobile">
+            <input type="text" placeholder="Search songs, artists, albums...">
+            <button type="submit">Search</button>
+        </div>
+        <ul class="nav-menu-mobile">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Discover</a></li>
+            <li><a href="#">Top Charts</a></li>
+            <li><a href="#">Albums</a></li>
+            <li><a href="#" class="btn login">
+                <i class="fas fa-user"></i> Log In
+            </a></li>
+        </ul>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
