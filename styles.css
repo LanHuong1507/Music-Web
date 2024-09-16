@@ -55,11 +55,13 @@ header {
     background-color: #0077b6;
     color: #fff;
 }
+
 /* Search Bar Styling */
 .search-bar {
     display: flex;
     align-items: center;
-    margin-bottom: 20px; /* Space below the search bar */
+    margin-bottom: 20px;
+    /* Space below the search bar */
 }
 
 .search-bar input {
@@ -97,7 +99,8 @@ header {
 .auth-buttons {
     display: flex;
     align-items: center;
-    margin-bottom: 20px; /* Space below the auth buttons */
+    margin-bottom: 20px;
+    /* Space below the auth buttons */
 }
 
 .auth-buttons .btn {
@@ -121,9 +124,11 @@ header {
 .auth-buttons .login:hover {
     background-color: #005f99;
 }
-/*Login Popup*/
+
+/*Login & Signup Popup*/
+
 .modal {
-    display: none; 
+    display: none;
     position: fixed;
     z-index: 2000;
     left: 0;
@@ -136,42 +141,47 @@ header {
 
 .modal-content {
     background-color: white;
-    margin: 10% auto;
+    margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 30%;
+    width: 90%;
+    max-width: 500px;
     text-align: center;
     border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .close {
     color: #aaa;
     float: right;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: bold;
 }
 
-.close:hover, .close:focus {
+.close:hover,
+.close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
 }
 
+
 .form-group {
-    margin-bottom: 15px; 
-    text-align: left; 
+    margin-bottom: 15px;
+    text-align: left;
 }
 
 label {
-    display: block; 
+    display: block;
     margin-bottom: 5px;
 }
 
 .form-group input[type="text"],
-.form-group input[type="password"] {
+.form-group input[type="password"],
+.form-group input[type="email"] {
     width: 100%;
     padding: 10px;
-    border: 2px solid #ccc; 
+    border: 2px solid #ccc;
     border-radius: 20px;
     font-size: 16px;
     outline: none;
@@ -179,7 +189,8 @@ label {
 }
 
 .form-group input[type="text"]:focus,
-.form-group input[type="password"]:focus {
+.form-group input[type="password"]:focus,
+.form-group input[type="email"]:focus {
     border-color: #0077b6;
 }
 
@@ -199,12 +210,14 @@ label {
     transform: scale(1.05);
 }
 
-#signupLink {
+#switchToSignup,
+#switchToLogin {
     color: #0077b6;
     text-decoration: none;
 }
 
-#signupLink:hover {
+#switchToSignup:hover,
+#switchToLogin:hover {
     text-decoration: underline;
 }
 
@@ -1174,6 +1187,7 @@ label {
     .auth-buttons {
         display: none;
     }
+
     .modal {
         padding: 20px;
     }
@@ -1208,11 +1222,13 @@ label {
     .mobile-menu-header .menu-bar li {
         margin-right: 15px;
     }
-    .btn{
+
+    .btn {
         align-items: center;
         text-align: center;
         margin-right: 5px;
     }
+
     /*Hero Section*/
     .hero {
         flex-direction: column;
@@ -1357,9 +1373,10 @@ label {
         margin-right: 20px;
         text-align: center;
     }
+
     .bxh-content ol {
         padding-left: 15px;
-        margin: 0; 
+        margin: 0;
     }
 
     .bxh-content ol li {
@@ -1367,10 +1384,12 @@ label {
         padding-left: 15px;
         margin-left: 10px;
     }
+
     .bxh-content ol li::before {
         position: absolute;
         left: -20px;
     }
+
     /*Bottom player*/
     .bottom-player {
         padding: 5px;
