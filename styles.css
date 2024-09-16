@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: #f4f4f4;
+    background-color: #f9f9f9;
 }
 
 /* Header */
@@ -445,7 +445,7 @@ header {
 
 /*Feature*/
 .music-genres {
-    margin: 40px 0;
+    margin: 20px 0;
     padding: 20px;
     background-color: #f9f9f9;
 }
@@ -537,12 +537,285 @@ header {
     background-color: #0056b3;
 }
 
+/*Music Section*/
+.music-section {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+.left-section {
+    display: flex;
+    flex-direction: column;
+    flex: 6;
+    padding-right: 20px;
+}
+
+.right-section {
+    display: flex;
+    flex-direction: column;
+    flex: 4;
+    padding-left: 20px;
+}
+
+.left-section h1,
+.left-section h2,
+.right-section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #333;
+    text-align: center;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.left-section h1 {
+    font-size: 36px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+.show-all-albums,
+.show-all-songs {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #00b4d8;
+    text-decoration: none;
+    margin-left: 15px;
+    border-bottom: 1px solid #00b4d8;
+    transition: color 0.3s, border-bottom 0.3s;
+}
+
+.show-all-albums:hover,
+.show-all-songs:hover {
+    color: #007bb5;
+    border-bottom: 1px solid #007bb5;
+}
+
+.left-section h2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 28px;
+}
+
+.right-section h2 {
+    font-size: 28px;
+    text-transform: uppercase;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.albums ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 5%;
+    flex-wrap: wrap;
+}
+
+.albums ul li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 30%;
+    padding: 10px;
+}
+
+.album-image {
+    position: relative;
+    display: inline-block;
+}
+
+.album-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.album-image .play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    padding: 15px;
+    display: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.album-image.active .play-icon {
+    display: flex;
+}
+
+.album-image:hover {
+    cursor: pointer;
+}
+
+.albums ul li span {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 5px;
+    text-align: center;
+    color: #555;
+}
+
+.songs ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.songs ul li {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: calc(50% - 10px);
+    padding: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.songs ul li:nth-child(-n+10) {
+    display: flex;
+}
+
+.songs ul.show-all-songs li {
+    display: flex;
+}
+
+.songs ul li:hover {
+    color: #0056b3;
+    transform: scale(1.02);
+}
+
+.songs ul li img {
+    max-width: 60px;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+
+.songs ul li a {
+    flex: 1;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.bxh-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    padding: 20px 40px;
+}
+
+.bxh-tabs .tabs {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.bxh-tabs .tabs li {
+    margin-right: 30px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.bxh-tabs .tabs li.active {
+    border-bottom: 2px solid #00b4d8;
+    font-weight: bold;
+    color: #00b4d8;
+}
+
+.bxh-content .tab-content-bxh {
+    display: none;
+}
+
+.bxh-content .tab-content-bxh.active {
+    display: block;
+}
+
+.bxh-content h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.bxh-content ol {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    list-style-position: inside;
+}
+
+.bxh-content ol li {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    position: relative;
+}
+
+.bxh-content ol li::before {
+    content: counter(list-item) ". ";
+    counter-increment: list-item;
+    position: absolute;
+    left: -2em;
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+}
+
+.bxh-content ol li:nth-child(1)::before,
+.bxh-content ol li:nth-child(2)::before {
+    color: #ff4500;
+}
+
+.bxh-content ol li:nth-child(3)::before {
+    font-size: 18px;
+    color: #333;
+}
+
+.bxh-content ol li img {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    object-fit: cover;
+}
+
+.bxh-content ol li span {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
 /*Bottom player*/
 .bottom-player {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
+    height: 100px;
     background-color: #f1f1f1;
     display: flex;
     align-items: center;
@@ -784,10 +1057,8 @@ header {
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-    .mobile-menu-toggle {
-        display: block;
-    }
 
+    /*Navbar*/
     .navbar {
         flex-direction: column;
     }
@@ -814,6 +1085,11 @@ header {
         display: none;
     }
 
+    /*Mobile Menu*/
+    .mobile-menu-toggle {
+        display: block;
+    }
+
     .mobile-menu.active {
         display: flex;
     }
@@ -835,6 +1111,7 @@ header {
         margin-right: 15px;
     }
 
+    /*Hero Section*/
     .hero {
         flex-direction: column;
         align-items: center;
@@ -886,11 +1163,113 @@ header {
         width: 30%;
     }
 
+    /*Genre Music*/
     .genre-item {
-        width: 100%;
-        gap: 20px;
+        width: 48%;
+        margin-bottom: 15px;
     }
 
+    .genre-image {
+        height: 180px;
+    }
+
+    .genre-details h3 {
+        font-size: 20px;
+    }
+
+    .genre-details p {
+        font-size: 16px;
+    }
+
+    .learn-more,
+    .load-more {
+        width: 100%;
+        padding: 12px 0;
+        font-size: 16px;
+        text-align: center;
+    }
+
+    /*Music*/
+    .music-section {
+        flex-direction: column;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .left-section,
+    .right-section {
+        flex: 1;
+        margin-bottom: 10px;
+        width: 90%;
+        padding-left: 10px;
+    }
+
+    .left-section h1 {
+        font-size: 24px;
+    }
+
+    .left-section h2,
+    .right-section h2 {
+        font-size: 22px;
+    }
+
+    .albums {
+        flex-direction: row;
+    }
+
+    .album-image {
+        width: 100%;
+    }
+
+    .album-image .play-icon {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .songs {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .songs ul {
+        padding: 0;
+    }
+
+    .songs ul li {
+        width: calc(100% - 10px);
+    }
+
+    .songs ul li img {
+        width: 60px;
+        height: 60px;
+        margin-right: 10px;
+    }
+
+    .songs ul li span {
+        font-size: 14px;
+    }
+
+    .bxh-tabs .tabs li {
+        font-size: 18px;
+        margin-right: 20px;
+        text-align: center;
+    }
+    .bxh-content ol {
+        padding-left: 15px;
+        margin: 0; 
+    }
+
+    .bxh-content ol li {
+        font-size: 14px;
+        padding-left: 15px;
+        margin-left: 10px;
+    }
+    .bxh-content ol li::before {
+        position: absolute;
+        left: -20px;
+    }
+    /*Bottom player*/
     .bottom-player {
         padding: 5px;
     }
@@ -906,7 +1285,7 @@ header {
     }
 
     .control-btn i {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .controls {
@@ -914,6 +1293,11 @@ header {
         align-items: center;
     }
 
+    .track-info h3 {
+        font-size: 14px;
+    }
+
+    /*Footer*/
     .footer-top {
         flex-direction: column;
         align-items: center;

@@ -1,4 +1,4 @@
-/*Navbar*/
+/*Navbar For Mobile Menu*/
 document.getElementById('mobile-menu-btn').addEventListener('click', function () {
     const menu = document.getElementById('mobile-menu');
     menu.classList.toggle('active');
@@ -8,7 +8,7 @@ document.getElementById('mobile-menu-close').addEventListener('click', function 
     const menu = document.getElementById('mobile-menu');
     menu.classList.remove('active');
 });
-/*Player Control*/
+/*Bottom Player COntrols*/
 document.addEventListener('DOMContentLoaded', () => {
     const player = new Audio();
     const playBtn = document.getElementById('play-btn');
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
     player.addEventListener('timeupdate', updatePlaybackTime);
 });
 
-/*Tab Navigation */
+/*Tab Navigation In Hero Section*/
 let currentTab = 0;
 const tabs = document.querySelectorAll('.tab-content');
 const tabNames = ['Most Listened', 'Most Favorite', 'New Releases', 'Top Rated', 'Top Artists'];
@@ -171,3 +171,47 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     updateLoadMoreButton();
 });
+/*Tab Navigation In Music Section */
+document.querySelectorAll('.bxh-tabs .tabs li').forEach(tab => {
+    tab.addEventListener('click', function () {
+        document.querySelectorAll('.bxh-tabs .tabs li').forEach(item => item.classList.remove('active'));
+        this.classList.add('active');
+        document.querySelectorAll('.bxh-content .tab-content-bxh').forEach(content => content.classList.remove('active'));
+        const tabId = this.getAttribute('data-tab');
+        document.getElementById(tabId).classList.add('active');
+    });
+});
+
+/*Play Button In Album */
+document.querySelectorAll('.album-image').forEach(album => {
+    album.addEventListener('click', function (e) {
+        document.querySelectorAll('.album-image').forEach(item => {
+            item.classList.remove('active');
+        });
+        this.classList.add('active');
+        e.stopPropagation();
+    });
+});
+document.addEventListener('click', function () {
+    document.querySelectorAll('.album-image').forEach(item => {
+        item.classList.remove('active');
+    });
+});
+
+/*Show All Songs */
+document.addEventListener('DOMContentLoaded', function () {
+    const showAllBtn = document.querySelector('.show-all-songs');
+    const songList = document.querySelector('.songs ul');
+
+    showAllBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (songList.classList.contains('show-all-songs')) {
+            songList.classList.remove('show-all-songs');
+            showAllBtn.textContent = 'Show All'; 
+        } else {
+            songList.classList.add('show-all-songs');
+            showAllBtn.textContent = 'Show Less'; 
+        }
+    });
+});
+
