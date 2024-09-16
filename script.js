@@ -8,6 +8,41 @@ document.getElementById('mobile-menu-close').addEventListener('click', function 
     const menu = document.getElementById('mobile-menu');
     menu.classList.remove('active');
 });
+/*Login Popup */
+const loginBtn = document.getElementById('loginBtn');
+const loginModal = document.getElementById('loginModal');
+const closeModal = document.querySelector('.modal .close');
+const mobileLoginBtn = document.getElementById('mobileLoginBtn');
+
+loginBtn.onclick = function() {
+    loginModal.style.display = 'block';
+}
+
+mobileLoginBtn.onclick = function() {
+    loginModal.style.display = 'block';
+}
+
+closeModal.onclick = function() {
+    loginModal.style.display = 'none';
+}
+window.onclick = function(event) {
+    if (event.target == loginModal) {
+        loginModal.style.display = 'none';
+    }
+}
+
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+const mobileMenuClose = document.getElementById('mobile-menu-close');
+
+mobileMenuBtn.onclick = function() {
+    mobileMenu.classList.add('active');
+}
+
+mobileMenuClose.onclick = function() {
+    mobileMenu.classList.remove('active');
+}
+
 /*Bottom Player COntrols*/
 document.addEventListener('DOMContentLoaded', () => {
     const player = new Audio();
