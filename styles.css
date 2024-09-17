@@ -1546,7 +1546,7 @@ label {
 
     .cta-button {
         padding: 2vh 5vw;
-        font-size: 2vw;
+        font-size: 3vw;
     }
 
     .hero-sidebar-tabs {
@@ -1561,12 +1561,12 @@ label {
     }
 
     .tab-navigation button {
-        font-size: 18px;
+        font-size: 14px;
         padding: 8px 15px;
     }
 
     .tab-navigation h2 {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     /*Music Carousel*/
@@ -1645,7 +1645,9 @@ label {
     .albums {
         flex-direction: row;
     }
-
+    .albums ul li h4,.playlists ul li h4,.videos ul li h4 {
+        font-size: 16px;
+    }
     .album-image {
         width: 100%;
     }
