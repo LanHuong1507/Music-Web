@@ -326,3 +326,56 @@ dots.forEach((dot, index) => {
         resetAutoSlide();
     });
 });
+/*Video Popup*/
+document.addEventListener('DOMContentLoaded', function () {
+    const playIcons = document.querySelectorAll('.play-icon');
+    const popup = document.getElementById('video-popup');
+    const closeBtn = document.querySelector('.close-video');
+    const videoPlayer = document.getElementById('video-player');
+    const videoSource = document.getElementById('video-source');
+
+    playIcons.forEach(icon => {
+        icon.addEventListener('click', function () {
+            const li = this.closest('li');
+            const videoUrl = li.getAttribute('data-video');
+
+            popup.style.display = 'block';
+            videoSource.src = videoUrl;
+            videoPlayer.load();
+            videoPlayer.play();
+        });
+    });
+
+    closeBtn.addEventListener('click', function () {
+        popup.style.display = 'none';
+        videoPlayer.pause();
+        videoSource.src = '';
+    });
+
+    window.addEventListener('click', function (event) {
+        if (event.target === popup) {
+            popup.style.display = 'none';
+            videoPlayer.pause();
+            videoSource.src = '';
+        }
+    });
+});
+/*Show All Video */
+document.addEventListener('DOMContentLoaded', function () {
+    const showAllBtn = document.querySelector('#show-all-videos');
+    const songList = document.querySelector('.videos ul');
+    function toggleVideos() {
+        if (songList.classList.contains('show-all')) {
+            songList.classList.remove('show-all');
+            showAllBtn.textContent = 'Show All';
+        } else {
+            songList.classList.add('show-all'); 
+            showAllBtn.textContent = 'Show Less';
+        }
+    }
+    showAllBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        toggleVideos();
+    });
+});
+

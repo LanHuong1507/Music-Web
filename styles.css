@@ -55,6 +55,7 @@ header {
     background-color: #0077b6;
     color: #fff;
 }
+
 .search-bar {
     display: flex;
     align-items: center;
@@ -538,16 +539,19 @@ label {
 .track-link:hover {
     color: #0077b6;
 }
+
 /*Music Carousel*/
 .music-carousel {
     margin-top: 30px;
     position: relative;
 }
+
 .music-carousel h2 {
     font-size: 24px;
     text-align: center;
     margin-bottom: 20px;
 }
+
 .carousel-container {
     position: relative;
     width: 100%;
@@ -576,7 +580,9 @@ label {
     font-size: 1.5em;
     color: #0077b6;
 }
-.prev, .next {
+
+.prev,
+.next {
     cursor: pointer;
     position: absolute;
     top: 50%;
@@ -601,9 +607,11 @@ label {
     border-radius: 0 3px 3px 0;
 }
 
-.prev:hover, .next:hover {
+.prev:hover,
+.next:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
+
 .dots-container {
     text-align: center;
     padding: 10px;
@@ -758,8 +766,11 @@ label {
     text-transform: uppercase;
     margin-bottom: 25px;
 }
+
 .show-all-albums,
-.show-all-songs {
+.show-all-songs,
+.show-all-playlists,
+.show-all-videos {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-weight: 500;
@@ -771,7 +782,9 @@ label {
 }
 
 .show-all-albums:hover,
-.show-all-songs:hover {
+.show-all-songs:hover,
+.show-all-playlists:hover,
+.show-all-videos:hover {
     color: #007bb5;
     border-bottom: 1px solid #007bb5;
 }
@@ -791,7 +804,9 @@ label {
     padding-bottom: 10px;
 }
 
-.albums ul,.recommended-playlists ul {
+.albums ul,
+.recommended-playlists ul,
+.videos ul {
     list-style: none;
     padding: 0;
     display: flex;
@@ -799,14 +814,24 @@ label {
     flex-wrap: wrap;
 }
 
-.albums ul li ,.recommended-playlists ul li {
+.albums ul li,
+.recommended-playlists ul li,
+.videos ul li {
     display: flex;
     flex-direction: column;
     align-items: center;
     flex-basis: 30%;
     padding: 10px;
 }
-
+.albums ul li h4,
+.recommended-playlists ul li h4,
+.videos ul li h4 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-top: 10px;
+    text-align: center;
+}
 .album-image {
     position: relative;
     display: inline-block;
@@ -814,9 +839,10 @@ label {
 
 .album-image img {
     width: 100%;
-    height: auto;
+    height: 100%;
     border-radius: 10px;
 }
+
 
 .album-image .play-icon {
     position: absolute;
@@ -840,7 +866,9 @@ label {
     cursor: pointer;
 }
 
-.albums ul li span {
+.albums ul li span,
+.recommended-playlists ul li span,
+.video ul li span {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-weight: 500;
@@ -876,11 +904,6 @@ label {
     display: flex;
 }
 
-.songs ul li:hover {
-    color: #0056b3;
-    transform: scale(1.02);
-}
-
 .songs ul li img {
     max-width: 60px;
     border-radius: 8px;
@@ -893,7 +916,55 @@ label {
     color: #333;
     font-weight: bold;
 }
+.songs ul li a:hover {
+    color:blue;
+}
 
+/*Video Popup*/
+.video-popup {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.video-popup-content {
+    position: relative;
+    margin: 15% auto;
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    background: #fff;
+}
+
+.close-video {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+    color: #000;
+}
+
+.close-video:hover,
+.close-video:focus {
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.videos ul li:nth-child(n+4) {
+    display: none;
+}
+
+.videos ul.show-all li {
+    display: flex;
+}
 .bxh-tabs {
     display: flex;
     justify-content: center;
@@ -953,7 +1024,15 @@ label {
     font-size: 16px;
     position: relative;
 }
-
+.bxh-content ol li a{
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+.bxh-content ol li a:hover{
+    color:blue;
+}
 .bxh-content ol li::before {
     content: counter(list-item) ". ";
     counter-increment: list-item;
@@ -982,12 +1061,6 @@ label {
     object-fit: cover;
 }
 
-.bxh-content ol li span {
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-}
 
 /*Bottom player*/
 .bottom-player {
@@ -1407,7 +1480,8 @@ label {
     .right-section h2 {
         font-size: 18px;
     }
-    .left-section span{
+
+    .left-section span {
         font-size: 14px;
     }
 
@@ -1448,6 +1522,7 @@ label {
     .songs ul li span {
         font-size: 14px;
     }
+
     .right-section h2 {
         font-size: 18px;
         text-align: center;
@@ -1468,7 +1543,7 @@ label {
         font-size: 14px;
         padding-left: 15px;
         margin-left: 10px;
-        
+
     }
 
     .bxh-content ol li::before {

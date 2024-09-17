@@ -422,55 +422,113 @@
         <div class="left-section">
             <h1>Music Collection</h1>
             <div class="recommended-playlists">
-                <h2>Recommended Playlists<a href="#" class="show-all-albums">Show All</a></h2>
+                <h2>Recommended Playlists<a href="#" class="show-all-playlists">Show All</a></h2>
                 <ul>
-                    <li>
+                    <li data-video="assets/video/cheerup.mp4">
                         <div class="album-image">
                             <img src="assets/img/sadsongs.jpg" alt="Playlist 2" class="playlist-cover">
                             <i class="fa fa-play play-icon"></i>
                         </div>
-                        <span>Sad Songs</span>
+                        <h4>Sad Songs</h4>
                     </li>
-                    <li>
+                    <li data-video="assets/video/cheerup.mp4">
                         <div class="album-image">
                             <img src="assets/img/chill.jpg" alt="Playlist 2" class="playlist-cover">
                             <i class="fa fa-play play-icon"></i>
                         </div>
-                        <span>Chill Vibes</span>
+                        <h4>Chill Vibes</h4>
                     </li>
-                    <li>
+                    <li data-video="assets/video/cheerup.mp4">
                         <div class="album-image">
                             <img src="assets/img/tophits.jpg" alt="Playlist 2" class="playlist-cover">
                             <i class="fa fa-play play-icon"></i>
                         </div>
-                        <span>Top Hits</span>
+                        <h4>Top Hits</h4>
                     </li>
                 </ul>
+            </div>
+            <div class="videos">
+                <h2>Music Videos <a href="#" id="show-all-videos" class="show-all-videos">Show All</a></h2>
+
+                <ul>
+                    <li data-video="assets/video/cheerup.mp4">
+                        <div class="album-image">
+                            <img src="assets/img/twice.jpg" alt="Video 1">
+                            <i class="fa fa-play play-icon"></i>
+                        </div>
+                        <h4>Cheer Up</h4>
+                    </li>
+                    <li data-video="assets/video/abcd.mp4">
+                        <div class="album-image">
+                            <img src="assets/img/nayeon.webp" alt="Video 1">
+                            <i class="fa fa-play play-icon"></i>
+                        </div>
+                        <h4>ABCD</h4>
+                    </li>
+                    <li data-video="assets/video/runaway.mp4">
+                        <div class="album-image">
+                            <img src="assets/img/tzuyu.jpg" alt="Video 1">
+                            <i class="fa fa-play play-icon"></i>
+                        </div>
+                        <h4>Run Away</h4>
+                    </li>
+                    <li data-video="assets/video/whatislove.mp4">
+                        <div class="album-image">
+                            <img src="assets/img/twice.jpg" alt="Video 1">
+                            <i class="fa fa-play play-icon"></i>
+                        </div>
+                        <h4>What Is Love</h4>
+                    </li>
+                    <li data-video="assets/video/killingmegood.mp4">
+                        <div class="album-image">
+                            <img src="assets/img/jihyo.jpg" alt="Video 1">
+                            <i class="fa fa-play play-icon"></i>
+                        </div>
+                        <span>Killing Me Good</span>
+                    </li>
+                    <li data-video="assets/video/dynamite.mp4">
+                        <div class="album-image">
+                            <img src="assets/img/bts.webp" alt="Video 1">
+                            <i class="fa fa-play play-icon"></i>
+                        </div>
+                        <h4>Dynamite</h4>
+                    </li>
+                </ul>
+            </div>
+            <!-- Video Popup -->
+            <div id="video-popup" class="video-popup">
+                <div class="video-popup-content">
+                    <span class="close-video">&times;</span>
+                    <video id="video-player" controls width="560">
+                        <source id="video-source" src="" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
             </div>
 
             <div class="albums">
                 <h2>Albums <a href="#" class="show-all-albums">Show All</a></h2>
                 <ul>
-                    <li>
+                    <li data-video="assets/video/dynamite.mp4">
                         <div class="album-image">
                             <img src="assets/img/vpop.jpg" alt="Album 1">
                             <i class="fa fa-play play-icon"></i>
                         </div>
-                        <span>Album 1</span>
+                        <h4>V-POP</h4>
                     </li>
-                    <li>
+                    <li data-video="assets/video/cheerup.mp4">
                         <div class="album-image">
                             <img src="assets/img/kpop.jpg" alt="Album 2">
                             <i class="fa fa-play play-icon"></i>
                         </div>
-                        <span>Album 2</span>
+                        <h4>K-POP</h4>
                     </li>
-                    <li>
+                    <li data-video="assets/video/cheerup.mp4">
                         <div class="album-image">
                             <img src="assets/img/usuk.png" alt="Album 3">
                             <i class="fa fa-play play-icon"></i>
                         </div>
-                        <span>Album 3</span>
+                        <h4>US-UK</h4>
                     </li>
                 </ul>
             </div>
