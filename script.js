@@ -269,14 +269,17 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
-
 /*Music Carousel */
 const carouselSlide = document.querySelector('.carousel-slide');
 const carouselItems = document.querySelectorAll('.carousel-item');
 const dots = document.querySelectorAll('.dot');
 let counter = 0;
-const size = carouselItems[0].clientWidth;
-
+let size = carouselItems[0].clientWidth;
+function updateCarousel() {
+    carouselSlide.style.transform = `translateX(${-size * counter}px)`;
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[counter].classList.add('active');
+}
 function autoSlide() {
     counter++;
     if (counter >= carouselItems.length) {
@@ -284,21 +287,11 @@ function autoSlide() {
     }
     updateCarousel();
 }
-
-function updateCarousel() {
-    carouselSlide.style.transform = `translateX(${-size * counter}px)`;
-    dots.forEach(dot => dot.classList.remove('active'));
-    dots[counter].classList.add('active');
-}
-
-let autoSlideInterval = setInterval(autoSlide, 4000);
-
-
 function resetAutoSlide() {
     clearInterval(autoSlideInterval);
-    autoSlideInterval = setInterval(autoSlide, 4000);
+    autoSlideInterval = setInterval(autoSlide, 2000);
 }
-
+let autoSlideInterval = setInterval(autoSlide, 2000);
 const nextBtn = document.querySelector('.next');
 const prevBtn = document.querySelector('.prev');
 
@@ -326,6 +319,12 @@ dots.forEach((dot, index) => {
         resetAutoSlide();
     });
 });
+
+window.addEventListener('resize', () => {
+    size = carouselItems[0].clientWidth;
+    updateCarousel();
+});
+
 /*Video Popup*/
 document.addEventListener('DOMContentLoaded', function () {
     const playIcons = document.querySelectorAll('.play-icon');

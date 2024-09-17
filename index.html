@@ -18,9 +18,9 @@
                 </div>
                 <ul class="nav-menu">
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">Discover</a></li>
-                    <li><a href="#">Top Charts</a></li>
-                    <li><a href="#">Albums</a></li>
+                    <li><a href="#hero">Discover</a></li>
+                    <li><a href="#music-section">Top Charts</a></li>
+                    <li><a href="#music-section">Albums</a></li>
                 </ul>
             </div>
             <div class="search-bar">
@@ -112,15 +112,15 @@
         </div>
         <ul class="nav-menu-mobile">
             <li><a href="#">Home</a></li>
-            <li><a href="#">Discover</a></li>
-            <li><a href="#">Top Charts</a></li>
-            <li><a href="#">Albums</a></li>
+            <li><a href="#hero">Discover</a></li>
+            <li><a href="#music-section">Top Charts</a></li>
+            <li><a href="#music-section">Albums</a></li>
             <li><a href="#" class="btn login" id="mobileLoginBtn">
                     <i class="fas fa-user"></i> Log In
                 </a></li>
         </ul>
     </div>
-    <section class="hero">
+    <section class="hero" id="hero">
         <div class="hero-content">
             <h1>Discover Your Next Favorite Track</h1>
             <p>Explore the best in music with curated playlists and trending hits. Stay tuned for the latest
@@ -129,10 +129,15 @@
         </div>
         <div class="hero-sidebar-tabs">
             <div class="tab-navigation">
-                <button id="prev-btn-tab">&lt; Previous</button>
+                <button id="prev-btn-tab">
+                    <i class="fas fa-chevron-left"></i> Previous
+                </button>
                 <h2 id="tab-name">Most Listened</h2>
-                <button id="next-btn-tab">Next &gt;</button>
+                <button id="next-btn-tab">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
+
             <div id="most-listened" class="tab-content active">
                 <h2>Most Listened</h2>
                 <ul class="music-list">
@@ -320,42 +325,48 @@
 
         </div>
     </section>
-    <section class="music-carousel">
-        <h2>Popular Albums</h2>
-        <div class="carousel-container">
-            <div class="carousel-slide">
-                <div class="carousel-item">
-                    <img src="assets/img/a1.webp" alt="Album 1">
-                    <p>Album 1</p>
+    <div class="content-container">
+        <div class="text-content">
+            <h2>Explore Top Albums</h2>
+            <p>Discover the latest and greatest albums across various genres. From pop hits to timeless classics,
+                explore what's trending in the music world today.</p>
+            <p><i class="fas fa-music"></i> Find your favorite music now!</p>
+            <button class="explore-btn"><i class="fa fa-play "></i> Start Listening</button>
+        </div>
+        <section class="music-carousel">
+            <h2>Popular Albums</h2>
+            <div class="carousel-container">
+                <div class="carousel-slide">
+                    <div class="carousel-item">
+                        <img src="assets/img/a1.webp" alt="Album 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="assets/img/a2.jpg" alt="Album 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="assets/img/a3.webp" alt="Album 3">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="assets/img/a4.jpg" alt="Album 4">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="assets/img/a5.jpeg" alt="Album 5">
+                    </div>
                 </div>
-                <div class="carousel-item">
-                    <img src="assets/img/a2.jpg" alt="Album 2">
-                    <p>Album 2</p>
-                </div>
-                <div class="carousel-item">
-                    <img src="assets/img/a3.webp" alt="Album 3">
-                    <p>Album 3</p>
-                </div>
-                <div class="carousel-item">
-                    <img src="assets/img/a4.jpg" alt="Album 4">
-                    <p>Album 4</p>
-                </div>
-                <div class="carousel-item">
-                    <img src="assets/img/a5.jpg" alt="Album 5">
-                    <p>Album 5</p>
-                </div>
+                <a class="prev">&#10094;</a>
+                <a class="next">&#10095;</a>
             </div>
-            <a class="prev">&#10094;</a>
-            <a class="next">&#10095;</a>
-        </div>
-        <div class="dots-container">
-            <span class="dot" data-slide="0"></span>
-            <span class="dot" data-slide="1"></span>
-            <span class="dot" data-slide="2"></span>
-            <span class="dot" data-slide="3"></span>
-            <span class="dot" data-slide="4"></span>
-        </div>
-    </section>
+            <div class="dots-container">
+                <span class="dot" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+                <span class="dot" data-slide="3"></span>
+                <span class="dot" data-slide="4"></span>
+
+            </div>
+        </section>
+    </div>
+
     <section class="music-genres">
         <div class="genres-content">
             <h2>Explore Music Genres</h2>
@@ -418,7 +429,7 @@
             <button id="load-more" class="load-more">Load More Genres</button>
         </div>
     </section>
-    <section class="music-section">
+    <section class="music-section" id="music-section">
         <div class="left-section">
             <h1>Music Collection</h1>
             <div class="recommended-playlists">
@@ -484,7 +495,7 @@
                             <img src="assets/img/jihyo.jpg" alt="Video 1">
                             <i class="fa fa-play play-icon"></i>
                         </div>
-                        <span>Killing Me Good</span>
+                        <h4>Killing Me Good</h4>
                     </li>
                     <li data-video="assets/video/dynamite.mp4">
                         <div class="album-image">
@@ -819,35 +830,45 @@
         <div class="news-item">
             <img src="assets/img/jyp.webp" alt="News Image">
             <div class="news-content">
-                <h3><a href="https://www.soompi.com/article/1688962wpp/watch-twice-2pm-wonder-girls-rain-and-g-o-d-perform-in-celebration-of-park-jin-youngs-30th-debut-anniversary" class="news-title" target="_blank" rel="noopener noreferrer">Watch: TWICE, 2PM, Wonder Girls, Rain, and G.O.D Perform in Celebration of Park Jin Young’s 30th Debut Anniversary</a></h3>
+                <h3><a href="https://www.soompi.com/article/1688962wpp/watch-twice-2pm-wonder-girls-rain-and-g-o-d-perform-in-celebration-of-park-jin-youngs-30th-debut-anniversary"
+                        class="news-title" target="_blank" rel="noopener noreferrer">Watch: TWICE, 2PM, Wonder Girls,
+                        Rain, and G.O.D Perform in Celebration of Park Jin Young’s 30th Debut Anniversary</a></h3>
                 <p class="news-date">September 17, 2024</p>
-                <p class="news-excerpt">Enjoy the special performances by popular K-pop groups and artists as they celebrate Park Jin Young's milestone anniversary in the music industry.</p>
-                <a href="https://www.soompi.com/article/1688962wpp/watch-twice-2pm-wonder-girls-rain-and-g-o-d-perform-in-celebration-of-park-jin-youngs-30th-debut-anniversary" class="read-more" target="_blank" rel="noopener noreferrer">Read More</a>
+                <p class="news-excerpt">Enjoy the special performances by popular K-pop groups and artists as they
+                    celebrate Park Jin Young's milestone anniversary in the music industry.</p>
+                <a href="https://www.soompi.com/article/1688962wpp/watch-twice-2pm-wonder-girls-rain-and-g-o-d-perform-in-celebration-of-park-jin-youngs-30th-debut-anniversary"
+                    class="read-more" target="_blank" rel="noopener noreferrer">Read More</a>
             </div>
         </div>
         <div class="news-item">
             <img src="assets/img/news.webp" alt="News Image">
             <div class="news-content">
-                <h3><a href="https://www.soompi.com/article/1688728wpp/september-girl-group-brand-reputation-rankings-announced-6" class="news-title" target="_blank" rel="noopener noreferrer">September Girl Group Brand Reputation Rankings Announced</a></h3>
+                <h3><a href="https://www.soompi.com/article/1688728wpp/september-girl-group-brand-reputation-rankings-announced-6"
+                        class="news-title" target="_blank" rel="noopener noreferrer">September Girl Group Brand
+                        Reputation Rankings Announced</a></h3>
                 <p class="news-date">September 15, 2024</p>
                 <p class="news-excerpt">September Girl Group Brand Reputation Rankings Announced</p>
-                <a href="https://www.soompi.com/article/1688728wpp/september-girl-group-brand-reputation-rankings-announced-6" class="read-more" target="_blank" rel="noopener noreferrer">Read More</a>
+                <a href="https://www.soompi.com/article/1688728wpp/september-girl-group-brand-reputation-rankings-announced-6"
+                    class="read-more" target="_blank" rel="noopener noreferrer">Read More</a>
             </div>
         </div>
         <div class="news-item">
             <img src="assets/img/news.webp" alt="News Image">
             <div class="news-content">
-                <h3><a href="https://www.soompi.com/article/1688684wpp/september-boy-group-brand-reputation-rankings-announced-8" class="news-title" target="_blank" rel="noopener noreferrer">September Boy Group Brand Reputation Rankings Announced</a></h3>
+                <h3><a href="https://www.soompi.com/article/1688684wpp/september-boy-group-brand-reputation-rankings-announced-8"
+                        class="news-title" target="_blank" rel="noopener noreferrer">September Boy Group Brand
+                        Reputation Rankings Announced</a></h3>
                 <p class="news-date">September 14, 2024</p>
                 <p class="news-excerpt">September Boy Group Brand Reputation Rankings Announced</p>
-                <a href="https://www.soompi.com/article/1688684wpp/september-boy-group-brand-reputation-rankings-announced-8" class="read-more" target="_blank" rel="noopener noreferrer">Read More</a>
+                <a href="https://www.soompi.com/article/1688684wpp/september-boy-group-brand-reputation-rankings-announced-8"
+                    class="read-more" target="_blank" rel="noopener noreferrer">Read More</a>
             </div>
         </div>
         <div class="more-news">
-            <a href="/more-news" class="more-news-button">Read More News</a>
+            <a href="#" class="more-news-button">Read More News</a>
         </div>
     </section>
-    
+
     <div id="bottom-player" class="bottom-player">
         <img id="bottom-track-image" src="assets/img/default-user.webp" alt="Track Image" class="bottom-track-image">
         <div class="track-info">
