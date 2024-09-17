@@ -55,13 +55,10 @@ header {
     background-color: #0077b6;
     color: #fff;
 }
-
-/* Search Bar Styling */
 .search-bar {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    /* Space below the search bar */
 }
 
 .search-bar input {
@@ -95,12 +92,10 @@ header {
     background-color: #03045e;
 }
 
-/* Authentication Buttons Styling */
 .auth-buttons {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    /* Space below the auth buttons */
 }
 
 .auth-buttons .btn {
@@ -543,8 +538,91 @@ label {
 .track-link:hover {
     color: #0077b6;
 }
+/*Music Carousel*/
+.music-carousel {
+    margin-top: 30px;
+    position: relative;
+}
+.music-carousel h2 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
 
+.carousel-slide {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+}
 
+.carousel-item {
+    min-width: 100%;
+    text-align: center;
+}
+
+.carousel-item img {
+    width: 85%;
+    height: 45vh;
+    border-radius: 20px;
+}
+
+.carousel-item p {
+    margin-top: 10px;
+    font-size: 1.5em;
+    color: #0077b6;
+}
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev {
+    left: 0;
+    border-radius: 0 3px 3px 0;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.dots-container {
+    text-align: center;
+    padding: 10px;
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.dot.active {
+    background-color: #0077b6;
+}
 
 /*Feature*/
 .music-genres {
@@ -680,7 +758,6 @@ label {
     text-transform: uppercase;
     margin-bottom: 25px;
 }
-
 .show-all-albums,
 .show-all-songs {
     font-family: 'Roboto', sans-serif;
@@ -704,7 +781,7 @@ label {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 15px;
-    font-size: 28px;
+    font-size: 24px;
 }
 
 .right-section h2 {
@@ -714,7 +791,7 @@ label {
     padding-bottom: 10px;
 }
 
-.albums ul {
+.albums ul,.recommended-playlists ul {
     list-style: none;
     padding: 0;
     display: flex;
@@ -722,7 +799,7 @@ label {
     flex-wrap: wrap;
 }
 
-.albums ul li {
+.albums ul li ,.recommended-playlists ul li {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1328,7 +1405,10 @@ label {
 
     .left-section h2,
     .right-section h2 {
-        font-size: 22px;
+        font-size: 18px;
+    }
+    .left-section span{
+        font-size: 14px;
     }
 
     .albums {
@@ -1351,7 +1431,8 @@ label {
     }
 
     .songs ul {
-        padding: 0;
+        padding: 10px;
+        align-items: center;
     }
 
     .songs ul li {
@@ -1366,6 +1447,10 @@ label {
 
     .songs ul li span {
         font-size: 14px;
+    }
+    .right-section h2 {
+        font-size: 18px;
+        text-align: center;
     }
 
     .bxh-tabs .tabs li {
@@ -1383,6 +1468,7 @@ label {
         font-size: 14px;
         padding-left: 15px;
         margin-left: 10px;
+        
     }
 
     .bxh-content ol li::before {

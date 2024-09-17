@@ -270,3 +270,59 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+/*Music Carousel */
+const carouselSlide = document.querySelector('.carousel-slide');
+const carouselItems = document.querySelectorAll('.carousel-item');
+const dots = document.querySelectorAll('.dot');
+let counter = 0;
+const size = carouselItems[0].clientWidth;
+
+function autoSlide() {
+    counter++;
+    if (counter >= carouselItems.length) {
+        counter = 0;
+    }
+    updateCarousel();
+}
+
+function updateCarousel() {
+    carouselSlide.style.transform = `translateX(${-size * counter}px)`;
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[counter].classList.add('active');
+}
+
+let autoSlideInterval = setInterval(autoSlide, 4000);
+
+
+function resetAutoSlide() {
+    clearInterval(autoSlideInterval);
+    autoSlideInterval = setInterval(autoSlide, 4000);
+}
+
+const nextBtn = document.querySelector('.next');
+const prevBtn = document.querySelector('.prev');
+
+nextBtn.addEventListener('click', () => {
+    counter++;
+    if (counter >= carouselItems.length) {
+        counter = 0;
+    }
+    updateCarousel();
+    resetAutoSlide();
+});
+
+prevBtn.addEventListener('click', () => {
+    counter--;
+    if (counter < 0) {
+        counter = carouselItems.length - 1;
+    }
+    updateCarousel();
+    resetAutoSlide();
+});
+dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        counter = index;
+        updateCarousel();
+        resetAutoSlide();
+    });
+});
