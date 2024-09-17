@@ -1209,10 +1209,11 @@ label {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 100px;
+    height: 120px;
     background-color: #f1f1f1;
     display: flex;
     align-items: center;
+    flex-direction: row;
     padding: 10px;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
@@ -1235,21 +1236,49 @@ label {
     align-items: flex-start;
     margin-right: 10px;
 }
-
 .progress-bar-container {
     width: 100%;
-    background-color: #ddd;
-    height: 5px;
-    margin: 5px 0;
-    border-radius: 3px;
+    height: 12px;
+    margin: 5px 10px;
     position: relative;
+    border: 1px solid #0077b6;
 }
 
-.progress-bar {
-    width: 0;
-    height: 100%;
-    background-color: #0077b6;
-    border-radius: 3px;
+#seek-slider {
+    width: 100%;
+    background: transparent;
+    border: none;
+    -webkit-appearance: none;
+    height: 12px;
+    position: relative;
+    z-index: 1;
+}
+
+#seek-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: #0077b6;
+    width: 12px;
+    height: 12px;
+    cursor: pointer;
+    margin-top: -5px;
+}
+
+#seek-slider::-moz-range-thumb {
+    background: #0077b6;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#progress-bar-filled {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 12px;
+    background: #0077b6;
+    border: 1px solid #0077b6;
+    z-index: 1000;
 }
 
 #player-controls {
@@ -1719,11 +1748,12 @@ label {
     /*Bottom player*/
     .bottom-player {
         padding: 5px;
+        flex-direction: column;
     }
 
     .bottom-track-image {
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
     }
 
     .control-btn {
@@ -1741,7 +1771,7 @@ label {
     }
 
     .track-info h3 {
-        font-size: 14px;
+        font-size: 18px;
     }
 
     /*Footer*/

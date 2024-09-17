@@ -70,30 +70,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const pauseBtn = document.getElementById('pause-btn');
     const nextBtn = document.getElementById('next-btn');
     const prevBtn = document.getElementById('prev-btn');
+    const speedX2Btn = document.getElementById('speed-x2');
+    const speedX4Btn = document.getElementById('speed-x4');
+    const speedNormalBtn = document.getElementById('speed-normal');
     const trackLinks = Array.from(document.querySelectorAll('.track-link'));
 
     const playbackTime = document.getElementById('playback-time');
     const totalDuration = document.getElementById('total-duration');
-    const progressBar = document.getElementById('progress-bar');
+    const seekSlider = document.getElementById('seek-slider');
+    const progressBarFilled = document.getElementById('progress-bar-filled');
 
     const bottomTrackImage = document.getElementById('bottom-track-image');
     const bottomTrackTitle = document.getElementById('bottom-track-title');
 
     let currentTrack = null;
     let currentTrackIndex = -1;
+
     function formatTime(seconds) {
         const minutes = Math.floor(seconds / 60);
         const secs = Math.floor(seconds % 60).toString().padStart(2, '0');
         return `${minutes}:${secs}`;
     }
+
     function updatePlaybackTime() {
         if (currentTrack && !currentTrack.paused) {
             playbackTime.textContent = formatTime(player.currentTime);
-
             const progress = (player.currentTime / player.duration) * 100;
-            progressBar.style.width = `${progress}%`;
+            seekSlider.value = progress;
+            progressBarFilled.style.width = `${progress}%`;
         }
     }
+
     function playTrack(index) {
         const trackLink = trackLinks[index];
         if (!trackLink) return;
@@ -163,8 +170,40 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log("No previous track to play, or no track selected.");
         }
     });
+
+    speedX2Btn.addEventListener('click', () => {
+        if (currentTrack) {
+            player.playbackRate = 2.0;
+            console.log('Playback speed set to x2.');
+        }
+    });
+
+    speedX4Btn.addEventListener('click', () => {
+        if (currentTrack) {
+            player.playbackRate = 4.0;
+            console.log('Playback speed set to x4.');
+        }
+    });
+
+    speedNormalBtn.addEventListener('click', () => {
+        if (currentTrack) {
+            player.playbackRate = 1.0;
+            console.log('Playback speed reset to normal.');
+        }
+    });
+
+    seekSlider.addEventListener('input', () => {
+        if (currentTrack) {
+            const newValue = seekSlider.value;
+            const newTime = (newValue / 100) * player.duration;
+            player.currentTime = newTime;
+        }
+    });
+
     player.addEventListener('timeupdate', updatePlaybackTime);
 });
+
+
 
 /*Tab Navigation In Hero Section*/
 let currentTab = 0;
@@ -358,6 +397,7 @@ document.addEventListener('DOMContentLoaded', function () {
             videoSource.src = '';
         }
     });
+    
 });
 /*Show All Video */
 document.addEventListener('DOMContentLoaded', function () {

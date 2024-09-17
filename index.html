@@ -876,7 +876,8 @@
             <div class="controls">
                 <span id="playback-time">0:00</span> / <span id="total-duration">0:00</span>
                 <div class="progress-bar-container">
-                    <div id="progress-bar" class="progress-bar"></div>
+                    <div id="progress-bar-filled"></div>
+                    <input type="range" id="seek-slider" min="0" max="100" value="0">
                 </div>
             </div>
         </div>
@@ -893,8 +894,12 @@
             <button id="next-btn" class="control-btn">
                 <i class="fa fa-forward"></i>
             </button>
+            <button id="speed-x2" class="control-btn">x2</button>
+            <button id="speed-x4" class="control-btn">x4</button>
+            <button id="speed-normal" class="control-btn">x1</button>
         </div>
     </div>
+
     <footer class="music-footer">
         <div class="footer-top">
             <div class="footer-left">
