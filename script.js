@@ -8,6 +8,7 @@ document.getElementById('mobile-menu-close').addEventListener('click', function 
     const menu = document.getElementById('mobile-menu');
     menu.classList.remove('active');
 });
+
 /* Login & Signup Popup */
 document.addEventListener('DOMContentLoaded', function () {
     const loginBtn = document.getElementById('loginBtn');
@@ -85,7 +86,6 @@ document.addEventListener('DOMContentLoaded', function () {
         logoutModal.style.display = 'none';
     }
 });
-
 
 /* Switch between Login and Signup forms */
 const switchToSignup = document.getElementById('switchToSignup');
@@ -257,8 +257,6 @@ document.addEventListener('DOMContentLoaded', () => {
     player.addEventListener('timeupdate', updatePlaybackTime);
 });
 
-
-
 /*Tab Navigation In Hero Section*/
 let currentTab = 0;
 const tabs = document.querySelectorAll('.tab-content');
@@ -294,31 +292,91 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /*Music Genres*/
-document.addEventListener('DOMContentLoaded', () => {
-    const loadMoreButton = document.getElementById('load-more');
-    let hiddenGenres = document.querySelectorAll('.genre-item.hidden');
+document.addEventListener('DOMContentLoaded', function () {
+    function createGenreItem(genre) {
+        const div = document.createElement('div');
+        div.classList.add('genre-item');
 
-    let visibleCount = 3;
+        const img = document.createElement('img');
+        img.src = genre.imgSrc;
+        img.alt = genre.altText;
+        img.classList.add('genre-image');
 
-    function updateLoadMoreButton() {
-        hiddenGenres = document.querySelectorAll('.genre-item.hidden');
-        if (hiddenGenres.length === 0) {
-            loadMoreButton.style.display = 'none';
-        } else {
-            loadMoreButton.style.display = 'inline-block';
-        }
+        const genreDetailsDiv = document.createElement('div');
+        genreDetailsDiv.classList.add('genre-details');
+
+        const h3 = document.createElement('h3');
+        h3.textContent = genre.title;
+
+        const p = document.createElement('p');
+        p.textContent = genre.description;
+
+        const learnMoreLink = document.createElement('a');
+        learnMoreLink.href = genre.link; 
+        learnMoreLink.classList.add('learn-more');
+        learnMoreLink.textContent = 'Learn More';
+
+        genreDetailsDiv.appendChild(h3);
+        genreDetailsDiv.appendChild(p);
+        genreDetailsDiv.appendChild(learnMoreLink);
+
+        div.appendChild(img);
+        div.appendChild(genreDetailsDiv);
+
+        return div;
     }
 
-    loadMoreButton.addEventListener('click', () => {
-        const genresToShow = Array.from(hiddenGenres).slice(0, visibleCount);
-        genresToShow.forEach(genre => {
+    function displayGenres() {
+        const genreList = document.getElementById('genre-list');
+        genres.forEach((genre, index) => {
+            const genreItem = createGenreItem(genre);
+            if (index >= 3) {
+                genreItem.classList.add('hidden');
+            }
+            genreList.appendChild(genreItem);
+        });
+    }
+    displayGenres();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const loadMoreButton = document.getElementById('load-more');
+    const visibleCount = 3;
+    let isExpanded = false;
+    function hideExtraGenres() {
+        const genres = document.querySelectorAll('.genre-item');
+        genres.forEach((genre, index) => {
+            if (index >= visibleCount) {
+                genre.classList.add('hidden');
+            }
+        });
+    }
+    function showAllGenres() {
+        const hiddenGenres = document.querySelectorAll('.genre-item.hidden');
+        hiddenGenres.forEach(genre => {
             genre.classList.remove('hidden');
         });
-
-        updateLoadMoreButton();
+    }
+    function updateButtonText() {
+        if (isExpanded) {
+            loadMoreButton.textContent = 'Show Less';
+        } else {
+            loadMoreButton.textContent = 'Load More';
+        }
+    }
+    loadMoreButton.addEventListener('click', () => {
+        if (isExpanded) {
+            hideExtraGenres();
+        } else {
+            showAllGenres();
+        }
+        isExpanded = !isExpanded;
+        updateButtonText();
     });
-    updateLoadMoreButton();
+    hideExtraGenres();
+    updateButtonText();
 });
+
 /*Tab Navigation In Music Section */
 document.querySelectorAll('.bxh-tabs .tabs li').forEach(tab => {
     tab.addEventListener('click', function () {
@@ -362,6 +420,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
 /*Music Carousel */
 document.addEventListener('DOMContentLoaded', function () {
     const carouselSlide = document.querySelector('.carousel-slide');
@@ -500,7 +559,6 @@ document.addEventListener('DOMContentLoaded', function () {
     handleAlbumImageClicks();
     handleShowAllButton();
 });
-
 
 /*Video */
 document.addEventListener('DOMContentLoaded', function () {

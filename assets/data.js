@@ -10,6 +10,51 @@ const users = [
     { username: "user9", password: "password9" },
     { username: "user10", password: "password10" }
 ];
+const genres = [
+    {
+        imgSrc: 'assets/img/rock.jpg',
+        altText: 'Rock Music',
+        title: 'Rock',
+        description: 'Experience the raw energy and electrifying riffs of rock music. From classic to modern rock, find your favorite bands and songs.',
+        link:'https://en.wikipedia.org/wiki/Rock_music'
+    },
+    {
+        imgSrc: 'assets/img/pop.jpg',
+        altText: 'Pop Music',
+        title: 'Pop',
+        description: 'Discover the catchy beats and infectious melodies of pop music. Explore chart-topping hits and the latest trends in the genre.',
+        link:'https://en.wikipedia.org/wiki/Pop_music'
+    },
+    {
+        imgSrc: 'assets/img/jazz.webp',
+        altText: 'Jazz Music',
+        title: 'Jazz',
+        description: 'Dive into the smooth and sophisticated world of jazz. Enjoy improvisational rhythms and timeless classics from legendary artists.',
+        link:'https://en.wikipedia.org/wiki/Jazz'
+    },
+    {
+        imgSrc: 'assets/img/hiphop.jpg',
+        altText: 'Hip Hop Music',
+        title: 'Hip Hop',
+        description: 'Get into the groove with hip hop music. Explore the beats, rhythms, and lyrical prowess of one of the most dynamic genres.',
+        link:'https://en.wikipedia.org/wiki/Hip_hop_music'
+    },
+    {
+        imgSrc: 'assets/img/classical.jpg',
+        altText: 'Classical Music',
+        title: 'Classical',
+        description: 'Immerse yourself in the elegant and timeless world of classical music. From Beethoven to Bach, experience the beauty of orchestral compositions.',
+         link:'https://en.wikipedia.org/wiki/Classical_music'
+    },
+    {
+        imgSrc: 'assets/img/electronic.jpg',
+        altText: 'Electronic Music',
+        title: 'Electronic',
+        description: 'Explore the innovative and dynamic world of electronic music. Discover the latest in EDM, house, techno, and more.',
+        link:'https://en.wikipedia.org/wiki/Electronic_music'
+    }
+];
+
 const carouselData = [
     {
         src: 'assets/img/a1.webp',
