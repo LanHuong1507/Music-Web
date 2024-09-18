@@ -9,28 +9,82 @@ document.getElementById('mobile-menu-close').addEventListener('click', function 
     menu.classList.remove('active');
 });
 /* Login & Signup Popup */
-const loginBtn = document.getElementById('loginBtn');
-const loginModal = document.getElementById('loginModal');
-const closeModal = document.querySelector('.modal .close');
-const mobileLoginBtn = document.getElementById('mobileLoginBtn');
-
-loginBtn.onclick = function () {
-    loginModal.style.display = 'block';
-}
-
-mobileLoginBtn.onclick = function () {
-    loginModal.style.display = 'block';
-}
-
-closeModal.onclick = function () {
-    loginModal.style.display = 'none';
-}
-
-window.onclick = function (event) {
-    if (event.target == loginModal) {
+document.addEventListener('DOMContentLoaded', function () {
+    const loginBtn = document.getElementById('loginBtn');
+    const loginModal = document.getElementById('loginModal');
+    const closeModal = document.querySelector('#loginModal .close');
+    const mobileLoginBtn = document.getElementById('mobileLoginBtn');
+    const loginForm = document.getElementById('login');
+    const webUserContainer = document.getElementById('webUserContainer');
+    const mobileUserContainer = document.getElementById('mobileUserContainer');
+    const logoutModal = document.getElementById('logoutModal');
+    const closeLogoutModal = document.querySelector('#logoutModal .close');
+    const confirmLogoutBtn = document.getElementById('confirmLogout');
+    const cancelLogoutBtn = document.getElementById('cancelLogout');
+    loginBtn.onclick = function () {
+        loginModal.style.display = 'block';
+    }
+    mobileLoginBtn.onclick = function () {
+        loginModal.style.display = 'block';
+    }
+    closeModal.onclick = function () {
         loginModal.style.display = 'none';
     }
-}
+    webUserContainer.onclick = function () {
+        logoutModal.style.display = 'block';
+    }
+    mobileUserContainer.onclick = function () {
+        logoutModal.style.display = 'block';
+    }
+    window.onclick = function (event) {
+        if (event.target == loginModal) {
+            loginModal.style.display = 'none';
+        }
+        if (event.target == logoutModal) {
+            logoutModal.style.display = 'none';
+        }
+    }
+    loginForm.onsubmit = function (event) {
+        event.preventDefault();
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        if (username === "user" && password === "password") {
+            console.log("Login successful!");
+            loginModal.style.display = 'none';
+            webUserContainer.style.display = 'inline-block';
+            mobileUserContainer.style.display = 'inline-block';
+            const userTemplate = `
+               <div class="user-image" id="userImage">
+                    <img src="assets/img/default-user.webp" alt="User Image" style="border-radius: 50%; vertical-align: middle; width: 30px; height: 30px;" id="userImage">
+                    <span style="margin-left: 10px;">${username}</span>
+               </div>
+            `;
+            webUserContainer.innerHTML = userTemplate;
+            mobileUserContainer.innerHTML = userTemplate;
+            loginBtn.style.display = 'none';
+            mobileLoginBtn.style.display = 'none';
+            document.getElementById('userImage').onclick = function () {
+                logoutModal.style.display = 'block';
+            };
+        } else {
+            console.log("Invalid credentials. Please try again.");
+        }
+    }
+    closeLogoutModal.onclick = function () {
+        logoutModal.style.display = 'none';
+    }
+    confirmLogoutBtn.onclick = function () {
+        logoutModal.style.display = 'none';
+        webUserContainer.style.display = 'none';
+        mobileUserContainer.style.display = 'none';
+        loginBtn.style.display = 'inline-block';
+        mobileLoginBtn.style.display = 'inline-block';
+    }
+    cancelLogoutBtn.onclick = function () {
+        logoutModal.style.display = 'none';
+    }
+});
+
 
 /* Switch between Login and Signup forms */
 const switchToSignup = document.getElementById('switchToSignup');
@@ -397,7 +451,7 @@ document.addEventListener('DOMContentLoaded', function () {
             videoSource.src = '';
         }
     });
-    
+
 });
 /*Show All Video */
 document.addEventListener('DOMContentLoaded', function () {
@@ -408,7 +462,7 @@ document.addEventListener('DOMContentLoaded', function () {
             songList.classList.remove('show-all');
             showAllBtn.textContent = 'Show All';
         } else {
-            songList.classList.add('show-all'); 
+            songList.classList.add('show-all');
             showAllBtn.textContent = 'Show Less';
         }
     }
