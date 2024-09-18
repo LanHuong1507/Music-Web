@@ -1,3 +1,4 @@
+
 /*Navbar For Mobile Menu*/
 document.getElementById('mobile-menu-btn').addEventListener('click', function () {
     const menu = document.getElementById('mobile-menu');
@@ -9,8 +10,9 @@ document.getElementById('mobile-menu-close').addEventListener('click', function 
     menu.classList.remove('active');
 });
 
-/* Login & Signup Popup */
+/* Login SignUp LogOut*/
 document.addEventListener('DOMContentLoaded', function () {
+    /*Login*/
     const loginBtn = document.getElementById('loginBtn');
     const loginModal = document.getElementById('loginModal');
     const closeModal = document.querySelector('#loginModal .close');
@@ -25,18 +27,23 @@ document.addEventListener('DOMContentLoaded', function () {
     loginBtn.onclick = function () {
         loginModal.style.display = 'block';
     }
+
     mobileLoginBtn.onclick = function () {
         loginModal.style.display = 'block';
     }
+
     closeModal.onclick = function () {
         loginModal.style.display = 'none';
     }
+
     webUserContainer.onclick = function () {
         logoutModal.style.display = 'block';
     }
+
     mobileUserContainer.onclick = function () {
         logoutModal.style.display = 'block';
     }
+
     window.onclick = function (event) {
         if (event.target == loginModal) {
             loginModal.style.display = 'none';
@@ -45,13 +52,18 @@ document.addEventListener('DOMContentLoaded', function () {
             logoutModal.style.display = 'none';
         }
     }
+
     loginForm.onsubmit = function (event) {
         event.preventDefault();
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
+        
+        let users = JSON.parse(localStorage.getItem('users')) || [];
+        
         const user = users.find(user => user.username === username && user.password === password);
+        
         if (user) {
-            console.log("Login successful!");
+            alert("Login successful!");
             loginModal.style.display = 'none';
             webUserContainer.style.display = 'inline-block';
             mobileUserContainer.style.display = 'inline-block';
@@ -69,12 +81,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 logoutModal.style.display = 'block';
             };
         } else {
-            console.log("Invalid credentials. Please try again.");
+            alert("Wrong username or password. Please try again.");
         }
     }
+    /*Logout */
     closeLogoutModal.onclick = function () {
         logoutModal.style.display = 'none';
     }
+
     confirmLogoutBtn.onclick = function () {
         logoutModal.style.display = 'none';
         webUserContainer.style.display = 'none';
@@ -82,28 +96,65 @@ document.addEventListener('DOMContentLoaded', function () {
         loginBtn.style.display = 'inline-block';
         mobileLoginBtn.style.display = 'inline-block';
     }
+
     cancelLogoutBtn.onclick = function () {
         logoutModal.style.display = 'none';
     }
 });
 
-/* Switch between Login and Signup forms */
-const switchToSignup = document.getElementById('switchToSignup');
-const switchToLogin = document.getElementById('switchToLogin');
-const loginForm = document.getElementById('loginForm');
-const signupForm = document.getElementById('signupForm');
-
-switchToSignup.onclick = function (e) {
-    e.preventDefault();
-    loginForm.style.display = 'none';
-    signupForm.style.display = 'block';
+function saveUser(newUser) {
+    users.push(newUser);
+    localStorage.setItem('users', JSON.stringify(users));
 }
 
-switchToLogin.onclick = function (e) {
-    e.preventDefault();
-    loginForm.style.display = 'block';
-    signupForm.style.display = 'none';
-}
+document.addEventListener('DOMContentLoaded', function () {
+    const switchToSignup = document.getElementById('switchToSignup');
+    const switchToLogin = document.getElementById('switchToLogin');
+    const loginForm = document.getElementById('loginForm');
+    const signupForm = document.getElementById('signupForm');
+    const signupFormElement = document.getElementById('signupFormElement');
+    switchToSignup.onclick = function (e) {
+        e.preventDefault();
+        loginForm.style.display = 'none';
+        signupForm.style.display = 'block';
+    }
+    switchToLogin.onclick = function (e) {
+        e.preventDefault();
+        loginForm.style.display = 'block';
+        signupForm.style.display = 'none';
+    }
+    signupFormElement.onsubmit = function (e) {
+        e.preventDefault();
+        const newUsername = document.getElementById('newUsername').value.trim();
+        const newEmail = document.getElementById('newEmail').value.trim();
+        const newPassword = document.getElementById('newPassword').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        if (newPassword !== confirmPassword) {
+            alert('Passwords do not match.');
+            return;
+        }
+
+        if (!newUsername || !newEmail || !newPassword) {
+            alert('Please fill in all fields.');
+            return;
+        }
+        const userExists = users.some(user => user.username === newUsername);
+        if (userExists) {
+            alert('Username already exists. Please choose a different username.');
+            return;
+        }
+        const newUser = {
+            username: newUsername,
+            email: newEmail,
+            password: newPassword
+        };
+
+        saveUser(newUser);
+        alert('Signup successful! You can now log in.');
+        loginForm.style.display = 'block';
+        signupForm.style.display = 'none';
+    }
+});
 
 /* Mobile Menu */
 const mobileMenuBtn = document.getElementById('mobile-menu-btn');

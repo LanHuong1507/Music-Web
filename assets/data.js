@@ -1,15 +1,9 @@
 const users = [
     { username: "user", password: "0123456789" },
-    { username: "lanhuong", password: "mo09112403" },
-    { username: "user3", password: "password3" },
-    { username: "user4", password: "password4" },
-    { username: "user5", password: "password5" },
-    { username: "user6", password: "password6" },
-    { username: "user7", password: "password7" },
-    { username: "user8", password: "password8" },
-    { username: "user9", password: "password9" },
-    { username: "user10", password: "password10" }
+    { username: "lanhuong", password: "mo09112403" }
 ];
+
+
 const genres = [
     {
         imgSrc: 'assets/img/rock.jpg',
@@ -157,6 +151,7 @@ const videoData = [
         title: 'Dynamite'
     }
 ];
+
 
 
 
