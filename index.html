@@ -55,6 +55,7 @@
                             <button type="submit" class="btn">Log In</button>
                         </form>
                         <p>Don't have an account? <a href="#" id="switchToSignup">Sign Up</a></p>
+                        <p><a href="#" id="forgotPassword">Forgot Password?</a></p>
                     </div>
                     <div id="signupForm" style="display: none;">
                         <h2>Sign Up</h2>
@@ -84,14 +85,48 @@
                         <p>Already have an account? <a href="#" id="switchToLogin">Log In</a></p>
                     </div>
                 </div>
+                <!-- Forgot Password Modal -->
+                <div id="forgotPasswordModal" style="display: none;">
+                    <div class="modal-content">
+                        <span class="close" id="closeForgotPasswordModal">&times;</span>
+                        <h2>Forgot Password</h2>
+                        <form id="forgotPasswordForm">
+                            <div class="form-group">
+                                <label for="resetEmail">Email</label>
+                                <input type="email" id="resetEmail" name="resetEmail" placeholder="Enter your email"
+                                    required>
+                            </div>
+                            <button type="submit" class="btn">Reset Password</button>
+                        </form>
+                    </div>
+                </div>
+                <!-- Reset Password Modal -->
+                <div id="resetPasswordModal" style="display: none;">
+                    <div class="modal-content">
+                        <span class="close" id="closeResetPasswordModal">&times;</span>
+                        <h2>Reset Password</h2>
+                        <form id="resetPasswordForm">
+                            <div class="form-group">
+                                <label for="newPassword">New Password</label>
+                                <input type="password" id="newPasswordReset" name="newPasswordReset"
+                                    placeholder="Enter new password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmNewPassword">Confirm New Password</label>
+                                <input type="password" id="confirmNewPasswordReset" name="confirmNewPasswordReset"
+                                    placeholder="Confirm new password" required>
+                            </div>
+                            <button type="submit" class="btn">Reset Password</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-
             <!-- Logout Modal -->
             <div id="logoutModal" class="modal" style="display: none;">
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <p>Are you sure you want to log out?</p>
-                    <button id="confirmLogout" class="btn1">Logout</button>
+                    <button id="confirmLogout" class="btn1">Log Out</button>
                     <button id="cancelLogout" class="btn1">Cancel</button>
                 </div>
             </div>

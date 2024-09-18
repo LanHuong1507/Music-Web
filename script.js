@@ -9,8 +9,7 @@ document.getElementById('mobile-menu-close').addEventListener('click', function 
     const menu = document.getElementById('mobile-menu');
     menu.classList.remove('active');
 });
-
-/* Login SignUp LogOut*/
+/*LOGIN */
 document.addEventListener('DOMContentLoaded', function () {
     /*Login*/
     const loginBtn = document.getElementById('loginBtn');
@@ -106,29 +105,31 @@ function saveUser(newUser) {
     users.push(newUser);
     localStorage.setItem('users', JSON.stringify(users));
 }
-
+/*SIGNUP */
 document.addEventListener('DOMContentLoaded', function () {
     const switchToSignup = document.getElementById('switchToSignup');
     const switchToLogin = document.getElementById('switchToLogin');
     const loginForm = document.getElementById('loginForm');
     const signupForm = document.getElementById('signupForm');
     const signupFormElement = document.getElementById('signupFormElement');
-    switchToSignup.onclick = function (e) {
+    function showSignupForm(e) {
         e.preventDefault();
         loginForm.style.display = 'none';
         signupForm.style.display = 'block';
     }
-    switchToLogin.onclick = function (e) {
+    function showLoginForm(e) {
         e.preventDefault();
         loginForm.style.display = 'block';
         signupForm.style.display = 'none';
     }
-    signupFormElement.onsubmit = function (e) {
+    function handleSignup(e) {
         e.preventDefault();
+
         const newUsername = document.getElementById('newUsername').value.trim();
         const newEmail = document.getElementById('newEmail').value.trim();
         const newPassword = document.getElementById('newPassword').value;
         const confirmPassword = document.getElementById('confirmPassword').value;
+
         if (newPassword !== confirmPassword) {
             alert('Passwords do not match.');
             return;
@@ -138,11 +139,14 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('Please fill in all fields.');
             return;
         }
+
+        let users = JSON.parse(localStorage.getItem('users')) || [];
         const userExists = users.some(user => user.username === newUsername);
         if (userExists) {
             alert('Username already exists. Please choose a different username.');
             return;
         }
+
         const newUser = {
             username: newUsername,
             email: newEmail,
@@ -150,10 +154,76 @@ document.addEventListener('DOMContentLoaded', function () {
         };
 
         saveUser(newUser);
+
         alert('Signup successful! You can now log in.');
         loginForm.style.display = 'block';
         signupForm.style.display = 'none';
     }
+    switchToSignup.addEventListener('click', showSignupForm);
+    switchToLogin.addEventListener('click', showLoginForm);
+    signupFormElement.addEventListener('submit', handleSignup);
+});
+/*FORGOT PASSWORD AND RESET */
+document.addEventListener('DOMContentLoaded', function () {
+    const forgotPassword = document.getElementById('forgotPassword');
+    const forgotPasswordModal = document.getElementById('forgotPasswordModal');
+    const closeForgotPasswordModal = document.getElementById('closeForgotPasswordModal');
+    const resetPasswordModal = document.getElementById('resetPasswordModal');
+    const closeResetPasswordModal = document.getElementById('closeResetPasswordModal');
+    const forgotPasswordForm = document.getElementById('forgotPasswordForm');
+    const resetPasswordForm = document.getElementById('resetPasswordForm');
+    function showForgotPasswordModal(e) {
+        e.preventDefault();
+        forgotPasswordModal.style.display = 'block';
+    }
+    function showResetPasswordModal() {
+        forgotPasswordModal.style.display = 'none';
+        resetPasswordModal.style.display = 'block';
+    }
+    function handleForgotPassword(e) {
+        e.preventDefault();
+        const resetEmail = document.getElementById('resetEmail').value.trim();
+
+        if (!resetEmail) {
+            alert('Please enter your email address.');
+            return;
+        }
+        alert('A password reset link has been sent to ' + resetEmail);
+        showResetPasswordModal();
+    }
+    function handleResetPassword(e) {
+        e.preventDefault();
+        const newPassword = document.getElementById('newPasswordReset').value.trim();
+        const confirmNewPassword = document.getElementById('confirmNewPasswordReset').value.trim();
+        const resetEmail = document.getElementById('resetEmail').value.trim(); // Get email from the field
+
+        if (!newPassword || !confirmNewPassword) {
+            alert('Please enter and confirm your new password.');
+            return;
+        }
+
+        if (newPassword !== confirmNewPassword) {
+            alert('Passwords do not match.');
+            return;
+        }
+        let users = JSON.parse(localStorage.getItem('users')) || [];
+        const userIndex = users.findIndex(user => user.email === resetEmail);
+        if (userIndex === -1) {
+            alert('No user found with this email address.');
+            return;
+        }
+
+        users[userIndex].password = newPassword;
+        localStorage.setItem('users', JSON.stringify(users));
+
+        alert('Your password has been successfully reset.');
+        resetPasswordModal.style.display = 'none';
+    }
+    forgotPassword.addEventListener('click', showForgotPasswordModal);
+    closeForgotPasswordModal.addEventListener('click', () => forgotPasswordModal.style.display = 'none');
+    closeResetPasswordModal.addEventListener('click', () => resetPasswordModal.style.display = 'none');
+    forgotPasswordForm.addEventListener('submit', handleForgotPassword);
+    resetPasswordForm.addEventListener('submit', handleResetPassword);
 });
 
 /* Mobile Menu */

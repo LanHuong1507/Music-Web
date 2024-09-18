@@ -226,13 +226,15 @@ label {
     transform: scale(1.05);
 }
 #switchToSignup,
-#switchToLogin {
+#switchToLogin,
+#forgotPassword{
     color: #0077b6;
     text-decoration: none;
 }
 
 #switchToSignup:hover,
-#switchToLogin:hover {
+#switchToLogin:hover ,
+#forgotPassword:hover{
     text-decoration: underline;
 }
 
