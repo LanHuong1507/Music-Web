@@ -363,7 +363,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 /*Music Carousel */
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const carouselSlide = document.querySelector('.carousel-slide');
     const nextBtn = document.querySelector('.next');
     const prevBtn = document.querySelector('.prev');
@@ -426,57 +426,199 @@ document.addEventListener('DOMContentLoaded', function() {
     populateCarousel();
 });
 
-/*Video Popup*/
+/*Recommended Playlists*/
 document.addEventListener('DOMContentLoaded', function () {
-    const playIcons = document.querySelectorAll('.play-icon');
-    const popup = document.getElementById('video-popup');
-    const closeBtn = document.querySelector('.close-video');
-    const videoPlayer = document.getElementById('video-player');
-    const videoSource = document.getElementById('video-source');
+    function createPlaylistItem(playlist) {
+        const li = document.createElement('li');
+        li.setAttribute('data-video', playlist.video);
 
-    playIcons.forEach(icon => {
-        icon.addEventListener('click', function () {
-            const li = this.closest('li');
-            const videoUrl = li.getAttribute('data-video');
+        const albumImageDiv = document.createElement('div');
+        albumImageDiv.classList.add('album-image');
 
-            popup.style.display = 'block';
-            videoSource.src = videoUrl;
-            videoPlayer.load();
-            videoPlayer.play();
+        const img = document.createElement('img');
+        img.src = playlist.image;
+        img.alt = playlist.title;
+        img.classList.add('playlist-cover');
+        albumImageDiv.appendChild(img);
+
+        const playIcon = document.createElement('i');
+        playIcon.classList.add('fa', 'fa-play', 'play-icon');
+        albumImageDiv.appendChild(playIcon);
+
+        const h4 = document.createElement('h4');
+        h4.textContent = playlist.title;
+
+        li.appendChild(albumImageDiv);
+        li.appendChild(h4);
+
+        return li;
+    }
+    function displayPlaylists() {
+        const playlistContainer = document.querySelector('.recommended-playlists .playlist');
+        playlists.forEach(playlist => {
+            const playlistItem = createPlaylistItem(playlist);
+            playlistContainer.appendChild(playlistItem);
         });
-    });
+    }
+    function handleAlbumImageClicks() {
+        document.querySelectorAll('.album-image').forEach(album => {
+            album.addEventListener('click', function (e) {
+                document.querySelectorAll('.album-image').forEach(item => {
+                    item.classList.remove('active');
+                });
+                this.classList.add('active');
+                e.stopPropagation();
+            });
+        });
 
-    closeBtn.addEventListener('click', function () {
-        popup.style.display = 'none';
-        videoPlayer.pause();
-        videoSource.src = '';
-    });
+        document.addEventListener('click', function () {
+            document.querySelectorAll('.album-image').forEach(item => {
+                item.classList.remove('active');
+            });
+        });
+    }
+    function handleShowAllButton() {
+        const showAllBtn = document.querySelector('#show-all-playlists');
+        const songList = document.querySelector('.recommended-playlists ul');
 
-    window.addEventListener('click', function (event) {
-        if (event.target === popup) {
+        function toggleVideos() {
+            if (songList.classList.contains('show-all')) {
+                songList.classList.remove('show-all');
+                showAllBtn.textContent = 'Show All';
+            } else {
+                songList.classList.add('show-all');
+                showAllBtn.textContent = 'Show Less';
+            }
+        }
+
+        showAllBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            toggleVideos();
+        });
+    }
+    displayPlaylists();
+    handleAlbumImageClicks();
+    handleShowAllButton();
+});
+
+
+/*Video */
+document.addEventListener('DOMContentLoaded', function () {
+    function createVideoItem(video) {
+        const li = document.createElement('li');
+        li.setAttribute('data-video', video.videoSrc);
+
+        const albumImageDiv = document.createElement('div');
+        albumImageDiv.classList.add('album-image');
+
+        const img = document.createElement('img');
+        img.src = video.imgSrc;
+        img.alt = video.altText;
+        img.classList.add('video-cover');
+        albumImageDiv.appendChild(img);
+
+        const playIcon = document.createElement('i');
+        playIcon.classList.add('fa', 'fa-play', 'play-icon');
+        albumImageDiv.appendChild(playIcon);
+
+        const h4 = document.createElement('h4');
+        h4.textContent = video.title;
+
+        li.appendChild(albumImageDiv);
+        li.appendChild(h4);
+
+        return li;
+    }
+
+    function displayVideos() {
+        const videoContainer = document.querySelector('.videos .video-player');
+        videoData.forEach(video => {
+            const videoItem = createVideoItem(video);
+            videoContainer.appendChild(videoItem);
+        });
+    }
+
+    function playVideo(videoSrc) {
+        const videoPlayer = document.querySelector('#video-player');
+        const videoSource = document.querySelector('#video-source');
+        videoSource.src = videoSrc;
+        videoPlayer.load();
+        videoPlayer.play();
+    }
+
+    function handleAlbumImageClicks() {
+        document.querySelectorAll('.album-image').forEach(album => {
+            album.addEventListener('click', function (e) {
+                document.querySelectorAll('.album-image').forEach(item => {
+                    item.classList.remove('active');
+                });
+                this.classList.add('active');
+                e.stopPropagation();
+            });
+        });
+
+        document.addEventListener('click', function () {
+            document.querySelectorAll('.album-image').forEach(item => {
+                item.classList.remove('active');
+            });
+        });
+    }
+
+    function handleShowAllButton() {
+        const showAllBtn = document.querySelector('#show-all-videos');
+        const videoList = document.querySelector('.videos ul');
+
+        function toggleVideos() {
+            if (videoList.classList.contains('show-all')) {
+                videoList.classList.remove('show-all');
+                showAllBtn.textContent = 'Show All';
+            } else {
+                videoList.classList.add('show-all');
+                showAllBtn.textContent = 'Show Less';
+            }
+        }
+
+        showAllBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            toggleVideos();
+        });
+    }
+
+    function setupVideoPopup() {
+        const playIcons = document.querySelectorAll('.play-icon');
+        const popup = document.getElementById('video-popup');
+        const closeBtn = document.querySelector('.close-video');
+        const videoPlayer = document.getElementById('video-player');
+        const videoSource = document.getElementById('video-source');
+
+        playIcons.forEach(icon => {
+            icon.addEventListener('click', function () {
+                const li = this.closest('li');
+                const videoUrl = li.getAttribute('data-video');
+
+                popup.style.display = 'block';
+                videoSource.src = videoUrl;
+                videoPlayer.load();
+                videoPlayer.play();
+            });
+        });
+
+        closeBtn.addEventListener('click', function () {
             popup.style.display = 'none';
             videoPlayer.pause();
             videoSource.src = '';
-        }
-    });
+        });
 
-});
-/*Show All Video */
-document.addEventListener('DOMContentLoaded', function () {
-    const showAllBtn = document.querySelector('#show-all-videos');
-    const songList = document.querySelector('.videos ul');
-    function toggleVideos() {
-        if (songList.classList.contains('show-all')) {
-            songList.classList.remove('show-all');
-            showAllBtn.textContent = 'Show All';
-        } else {
-            songList.classList.add('show-all');
-            showAllBtn.textContent = 'Show Less';
-        }
+        window.addEventListener('click', function (event) {
+            if (event.target === popup) {
+                popup.style.display = 'none';
+                videoPlayer.pause();
+                videoSource.src = '';
+            }
+        });
     }
-    showAllBtn.addEventListener('click', function (e) {
-        e.preventDefault();
-        toggleVideos();
-    });
+    displayVideos();
+    handleAlbumImageClicks();
+    handleShowAllButton();
+    setupVideoPopup();
 });
-
