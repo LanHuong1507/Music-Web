@@ -878,8 +878,28 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+    function handleShowAllButton() {
+        const showAllBtn = document.querySelector('#show-all-videos');
+        const playlistList = document.querySelector('.videos ul');
+
+        function togglePlaylists() {
+            if (playlistList.classList.contains('show-all')) {
+                playlistList.classList.remove('show-all');
+                showAllBtn.textContent = 'Show All';
+            } else {
+                playlistList.classList.add('show-all');
+                showAllBtn.textContent = 'Show Less';
+            }
+        }
+
+        showAllBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            togglePlaylists();
+        });
+    }
 
     displayVideos();
     setupVideoPopup();
+    handleShowAllButton();
 });
 
