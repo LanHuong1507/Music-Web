@@ -734,8 +734,7 @@ document.addEventListener('DOMContentLoaded', function () {
     populateCarousel();
 });
 
-/*Recommended Playlists*/
-document.addEventListener('DOMContentLoaded', function () {
+/*Recommended Playlists*/document.addEventListener('DOMContentLoaded', function () {
     function createPlaylistItem(playlist) {
         const li = document.createElement('li');
 
@@ -760,6 +759,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         return li;
     }
+
     function displayPlaylists() {
         const playlistContainer = document.querySelector('.recommended-playlists .playlist');
         playlists.forEach(playlist => {
@@ -767,6 +767,7 @@ document.addEventListener('DOMContentLoaded', function () {
             playlistContainer.appendChild(playlistItem);
         });
     }
+
     function handlePlaylistImageClicks() {
         document.querySelectorAll('.playlist-image').forEach(playlist => {
             playlist.addEventListener('click', function (e) {
@@ -784,16 +785,17 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     }
+
     function handleShowAllButton() {
         const showAllBtn = document.querySelector('#show-all-playlists');
-        const songList = document.querySelector('.recommended-playlists ul');
+        const playlistList = document.querySelector('.recommended-playlists ul');
 
         function togglePlaylists() {
-            if (songList.classList.contains('show-all')) {
-                songList.classList.remove('show-all');
+            if (playlistList.classList.contains('show-all')) {
+                playlistList.classList.remove('show-all');
                 showAllBtn.textContent = 'Show All';
             } else {
-                songList.classList.add('show-all');
+                playlistList.classList.add('show-all');
                 showAllBtn.textContent = 'Show Less';
             }
         }
@@ -803,11 +805,11 @@ document.addEventListener('DOMContentLoaded', function () {
             togglePlaylists();
         });
     }
+
     displayPlaylists();
     handlePlaylistImageClicks();
     handleShowAllButton();
 });
-
 
 /*Video */
 document.addEventListener('DOMContentLoaded', function () {
@@ -815,23 +817,23 @@ document.addEventListener('DOMContentLoaded', function () {
         const li = document.createElement('li');
         li.setAttribute('data-video', video.videoSrc);
 
-        const albumImageDiv = document.createElement('div');
-        albumImageDiv.classList.add('album-image');
+        const videoImageDiv = document.createElement('div');
+        videoImageDiv.classList.add('video-image');
 
         const img = document.createElement('img');
         img.src = video.imgSrc;
         img.alt = video.altText;
         img.classList.add('video-cover');
-        albumImageDiv.appendChild(img);
+        videoImageDiv.appendChild(img);
 
         const playIcon = document.createElement('i');
         playIcon.classList.add('fa', 'fa-play', 'play-icon');
-        albumImageDiv.appendChild(playIcon);
+        videoImageDiv.appendChild(playIcon);
 
         const h4 = document.createElement('h4');
         h4.textContent = video.title;
 
-        li.appendChild(albumImageDiv);
+        li.appendChild(videoImageDiv);
         li.appendChild(h4);
 
         return li;
@@ -845,77 +847,29 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    function playVideo(videoSrc) {
-        const videoPlayer = document.querySelector('#video-player');
-        const videoSource = document.querySelector('#video-source');
-        videoSource.src = videoSrc;
-        videoPlayer.load();
-        videoPlayer.play();
-    }
-
-    function handleAlbumImageClicks() {
-        document.querySelectorAll('.album-image').forEach(album => {
-            album.addEventListener('click', function (e) {
-                document.querySelectorAll('.album-image').forEach(item => {
-                    item.classList.remove('active');
-                });
-                this.classList.add('active');
-                e.stopPropagation();
-            });
-        });
-
-        document.addEventListener('click', function () {
-            document.querySelectorAll('.album-image').forEach(item => {
-                item.classList.remove('active');
-            });
-        });
-    }
-
-    function handleShowAllButton() {
-        const showAllBtn = document.querySelector('#show-all-videos');
-        const videoList = document.querySelector('.videos ul');
-
-        function toggleVideos() {
-            if (videoList.classList.contains('show-all')) {
-                videoList.classList.remove('show-all');
-                showAllBtn.textContent = 'Show All';
-            } else {
-                videoList.classList.add('show-all');
-                showAllBtn.textContent = 'Show Less';
-            }
-        }
-
-        showAllBtn.addEventListener('click', function (e) {
-            e.preventDefault();
-            toggleVideos();
-        });
-    }
-
     function setupVideoPopup() {
-        const playIcons = document.querySelectorAll('.play-icon');
+        const playIcons = document.querySelectorAll('.video-image');
         const popup = document.getElementById('video-popup');
         const closeBtn = document.querySelector('.close-video');
         const videoPlayer = document.getElementById('video-player');
         const videoSource = document.getElementById('video-source');
-
+        popup.style.display = 'none';
         playIcons.forEach(icon => {
             icon.addEventListener('click', function () {
                 const li = this.closest('li');
                 const videoUrl = li.getAttribute('data-video');
 
-                popup.style.display = 'block';
+                popup.style.display = 'flex';
                 videoSource.src = videoUrl;
                 videoPlayer.load();
                 videoPlayer.play();
             });
         });
-
         closeBtn.addEventListener('click', function () {
             popup.style.display = 'none';
             videoPlayer.pause();
             videoSource.src = '';
         });
-
         window.addEventListener('click', function (event) {
             if (event.target === popup) {
                 popup.style.display = 'none';
@@ -924,8 +878,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+
     displayVideos();
-    handleAlbumImageClicks();
-    handleShowAllButton();
     setupVideoPopup();
 });
+
