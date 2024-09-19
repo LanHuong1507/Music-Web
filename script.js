@@ -9,6 +9,134 @@ document.getElementById('mobile-menu-close').addEventListener('click', function 
     const menu = document.getElementById('mobile-menu');
     menu.classList.remove('active');
 });
+/*Search bar */
+
+function showDropdown() {
+    const dropdown = document.getElementById('searchDropdown');
+    dropdown.style.display = 'block';
+}
+
+window.onclick = function (event) {
+    const dropdown = document.getElementById('searchDropdown');
+    const searchBar = document.querySelector('.search-bar');
+
+    if (!searchBar.contains(event.target)) {
+        dropdown.style.display = 'none';
+    }
+
+    // Mobile dropdown close logic
+    const dropdownMobile = document.getElementById('searchDropdownMobile');
+    const searchBarMobile = document.querySelector('.search-bar-mobile');
+
+    if (!searchBarMobile.contains(event.target)) {
+        dropdownMobile.style.display = 'none';
+    }
+}
+
+document.getElementById('closeDropdown').onclick = function () {
+    document.getElementById('searchDropdown').style.display = 'none';
+}
+function showDropdownMobile() {
+    const dropdownMobile = document.getElementById('searchDropdownMobile');
+    dropdownMobile.style.display = 'block';
+}
+
+document.getElementById('closeDropdownMobile').onclick = function () {
+    document.getElementById('searchDropdownMobile').style.display = 'none';
+}
+function addToRecentSearches(term) {
+    let recentSearches = JSON.parse(localStorage.getItem('recentSearches')) || [];
+
+    if (!recentSearches.includes(term)) {
+        recentSearches.push(term);
+        if (recentSearches.length > 5) {
+            recentSearches.shift();
+        }
+        localStorage.setItem('recentSearches', JSON.stringify(recentSearches));
+        updateHistoryList();
+        updateHistoryListMobile();
+    }
+}
+function updateHistoryList() {
+    const historyList = document.getElementById('historyList');
+    historyList.innerHTML = '';
+
+    const recentSearches = JSON.parse(localStorage.getItem('recentSearches')) || [];
+
+    recentSearches.forEach(item => {
+        const li = document.createElement('li');
+        const timeIcon = document.createElement('i');
+        timeIcon.className = 'fas fa-clock';
+        li.appendChild(timeIcon);
+        const textNode = document.createTextNode(' ' + item);
+        li.appendChild(textNode);
+        const closeIcon = document.createElement('i');
+        closeIcon.className = 'fas fa-times close-icon';
+        closeIcon.onclick = function () {
+            removeFromRecentSearches(item);
+        };
+        li.appendChild(closeIcon);
+
+        historyList.appendChild(li);
+    });
+}
+
+function updateHistoryListMobile() {
+    const historyListMobile = document.getElementById('historyListMobile');
+    historyListMobile.innerHTML = '';
+
+    const recentSearches = JSON.parse(localStorage.getItem('recentSearches')) || [];
+
+    recentSearches.forEach(item => {
+        const li = document.createElement('li');
+        const timeIcon = document.createElement('i');
+        timeIcon.className = 'fas fa-clock';
+        li.appendChild(timeIcon);
+        const textNode = document.createTextNode(' ' + item);
+        li.appendChild(textNode);
+        const closeIcon = document.createElement('i');
+        closeIcon.className = 'fas fa-times close-icon';
+        closeIcon.onclick = function () {
+            removeFromRecentSearches(item);
+        };
+        li.appendChild(closeIcon);
+
+        historyListMobile.appendChild(li);
+    });
+}
+function removeFromRecentSearches(term) {
+    let recentSearches = JSON.parse(localStorage.getItem('recentSearches')) || [];
+    recentSearches = recentSearches.filter(item => item !== term);
+    localStorage.setItem('recentSearches', JSON.stringify(recentSearches));
+    updateHistoryList();
+    updateHistoryListMobile();
+}
+function handleSearch() {
+    const searchInput = document.getElementById('searchInput');
+    const searchTerm = searchInput.value.trim();
+
+    if (searchTerm) {
+        addToRecentSearches(searchTerm);
+        searchInput.value = '';
+    }
+}
+function handleSearchMobile() {
+    const searchInputMobile = document.getElementById('searchInputMobile');
+    const searchTermMobile = searchInputMobile.value.trim();
+
+    if (searchTermMobile) {
+        addToRecentSearches(searchTermMobile);
+        searchInputMobile.value = '';
+    }
+}
+document.querySelector('.search-icon').addEventListener('click', handleSearch);
+document.querySelector('.search-bar-mobile .search-icon').addEventListener('click', handleSearchMobile);
+
+updateHistoryList();
+updateHistoryListMobile();
+
+
+
 /*LOGIN */
 document.addEventListener('DOMContentLoaded', function () {
     /*Login*/
@@ -56,11 +184,11 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault();
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
-        
+
         let users = JSON.parse(localStorage.getItem('users')) || [];
-        
+
         const user = users.find(user => user.username === username && user.password === password);
-        
+
         if (user) {
             alert("Login successful!");
             loginModal.style.display = 'none';
@@ -433,7 +561,7 @@ document.addEventListener('DOMContentLoaded', function () {
         p.textContent = genre.description;
 
         const learnMoreLink = document.createElement('a');
-        learnMoreLink.href = genre.link; 
+        learnMoreLink.href = genre.link;
         learnMoreLink.classList.add('learn-more');
         learnMoreLink.textContent = 'Learn More';
 
@@ -610,25 +738,24 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
     function createPlaylistItem(playlist) {
         const li = document.createElement('li');
-        li.setAttribute('data-video', playlist.video);
 
-        const albumImageDiv = document.createElement('div');
-        albumImageDiv.classList.add('album-image');
+        const playlistImageDiv = document.createElement('div');
+        playlistImageDiv.classList.add('playlist-image');
 
         const img = document.createElement('img');
         img.src = playlist.image;
         img.alt = playlist.title;
         img.classList.add('playlist-cover');
-        albumImageDiv.appendChild(img);
+        playlistImageDiv.appendChild(img);
 
         const playIcon = document.createElement('i');
         playIcon.classList.add('fa', 'fa-play', 'play-icon');
-        albumImageDiv.appendChild(playIcon);
+        playlistImageDiv.appendChild(playIcon);
 
         const h4 = document.createElement('h4');
         h4.textContent = playlist.title;
 
-        li.appendChild(albumImageDiv);
+        li.appendChild(playlistImageDiv);
         li.appendChild(h4);
 
         return li;
@@ -640,10 +767,10 @@ document.addEventListener('DOMContentLoaded', function () {
             playlistContainer.appendChild(playlistItem);
         });
     }
-    function handleAlbumImageClicks() {
-        document.querySelectorAll('.album-image').forEach(album => {
-            album.addEventListener('click', function (e) {
-                document.querySelectorAll('.album-image').forEach(item => {
+    function handlePlaylistImageClicks() {
+        document.querySelectorAll('.playlist-image').forEach(playlist => {
+            playlist.addEventListener('click', function (e) {
+                document.querySelectorAll('.playlist-image').forEach(item => {
                     item.classList.remove('active');
                 });
                 this.classList.add('active');
@@ -652,7 +779,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         document.addEventListener('click', function () {
-            document.querySelectorAll('.album-image').forEach(item => {
+            document.querySelectorAll('.playlist-image').forEach(item => {
                 item.classList.remove('active');
             });
         });
@@ -661,7 +788,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const showAllBtn = document.querySelector('#show-all-playlists');
         const songList = document.querySelector('.recommended-playlists ul');
 
-        function toggleVideos() {
+        function togglePlaylists() {
             if (songList.classList.contains('show-all')) {
                 songList.classList.remove('show-all');
                 showAllBtn.textContent = 'Show All';
@@ -673,13 +800,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
         showAllBtn.addEventListener('click', function (e) {
             e.preventDefault();
-            toggleVideos();
+            togglePlaylists();
         });
     }
     displayPlaylists();
-    handleAlbumImageClicks();
+    handlePlaylistImageClicks();
     handleShowAllButton();
 });
+
 
 /*Video */
 document.addEventListener('DOMContentLoaded', function () {

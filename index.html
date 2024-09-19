@@ -24,8 +24,26 @@
                 </ul>
             </div>
             <div class="search-bar">
-                <input type="text" placeholder="Search songs, artists, albums...">
-                <button type="submit">Search</button>
+                <input id="searchInput" type="text" placeholder="Search songs, artists, albums..."
+                    onfocus="showDropdown()" onclick="showDropdown()">
+                <button class="search-icon" onclick="showDropdown()">
+                    <i class="fas fa-search"></i>
+                </button>
+                <div id="searchDropdown" class="dropdown">
+                    <button id="closeDropdown" class="close-dropdown">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <div class="hashtags">
+                        <p>#Nayeon</p>
+                        <p>#BLACKPINKLISA</p>
+                        <p>#TWICE</p>
+                        <p>#Tzuyu</p>
+                    </div>
+                    <div class="search-history">
+                        <h4>Recent Searches</h4>
+                        <ul id="historyList"></ul>
+                    </div>
+                </div>
             </div>
 
             <div class="auth-buttons">
@@ -152,8 +170,26 @@
             </button>
         </div>
         <div class="search-bar-mobile">
-            <input type="text" placeholder="Search songs, artists, albums...">
-            <button type="submit">Search</button>
+            <input id="searchInputMobile" type="text" placeholder="Search songs, artists, albums..."
+                onfocus="showDropdownMobile()" onclick="showDropdownMobile()">
+            <button class="search-icon" onclick="showDropdownMobile()">
+                <i class="fas fa-search"></i>
+            </button>
+            <div id="searchDropdownMobile" class="dropdown">
+                <button id="closeDropdownMobile" class="close-dropdown" onclick="closeDropdownMobile()">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="hashtags">
+                    <p>#Nayeon</p>
+                    <p>#BLACKPINKLISA</p>
+                    <p>#TWICE</p>
+                    <p>#Tzuyu</p>
+                </div>
+                <div class="search-history">
+                    <h4>Recent Searches</h4>
+                    <ul id="historyListMobile"></ul>
+                </div>
+            </div>
         </div>
         <ul class="nav-menu-mobile">
             <li><a href="#">Home</a></li>
@@ -424,35 +460,26 @@
                 <ul class="video-player">
                 </ul>
             </div>
-            <!-- Video Popup -->
-            <div id="video-popup" class="video-popup">
-                <div class="video-popup-content">
-                    <span class="close-video">&times;</span>
-                    <video id="video-player" controls width="560">
-                        <source id="video-source" src="" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            </div>
+
 
             <div class="albums">
                 <h2>Albums <a href="#" class="show-all-albums">Show All</a></h2>
                 <ul>
-                    <li data-video="assets/video/dynamite.mp4">
+                    <li>
                         <div class="album-image">
                             <img src="assets/img/vpop.jpg" alt="Album 1">
                             <i class="fa fa-play play-icon"></i>
                         </div>
                         <h4>V-POP</h4>
                     </li>
-                    <li data-video="assets/video/cheerup.mp4">
+                    <li>
                         <div class="album-image">
                             <img src="assets/img/kpop.jpg" alt="Album 2">
                             <i class="fa fa-play play-icon"></i>
                         </div>
                         <h4>K-POP</h4>
                     </li>
-                    <li data-video="assets/video/cheerup.mp4">
+                    <li>
                         <div class="album-image">
                             <img src="assets/img/usuk.png" alt="Album 3">
                             <i class="fa fa-play play-icon"></i>

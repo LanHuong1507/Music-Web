@@ -10,42 +10,42 @@ const genres = [
         altText: 'Rock Music',
         title: 'Rock',
         description: 'Experience the raw energy and electrifying riffs of rock music. From classic to modern rock, find your favorite bands and songs.',
-        link:'https://en.wikipedia.org/wiki/Rock_music'
+        link: 'https://en.wikipedia.org/wiki/Rock_music'
     },
     {
         imgSrc: 'assets/img/pop.jpg',
         altText: 'Pop Music',
         title: 'Pop',
         description: 'Discover the catchy beats and infectious melodies of pop music. Explore chart-topping hits and the latest trends in the genre.',
-        link:'https://en.wikipedia.org/wiki/Pop_music'
+        link: 'https://en.wikipedia.org/wiki/Pop_music'
     },
     {
         imgSrc: 'assets/img/jazz.webp',
         altText: 'Jazz Music',
         title: 'Jazz',
         description: 'Dive into the smooth and sophisticated world of jazz. Enjoy improvisational rhythms and timeless classics from legendary artists.',
-        link:'https://en.wikipedia.org/wiki/Jazz'
+        link: 'https://en.wikipedia.org/wiki/Jazz'
     },
     {
         imgSrc: 'assets/img/hiphop.jpg',
         altText: 'Hip Hop Music',
         title: 'Hip Hop',
         description: 'Get into the groove with hip hop music. Explore the beats, rhythms, and lyrical prowess of one of the most dynamic genres.',
-        link:'https://en.wikipedia.org/wiki/Hip_hop_music'
+        link: 'https://en.wikipedia.org/wiki/Hip_hop_music'
     },
     {
         imgSrc: 'assets/img/classical.jpg',
         altText: 'Classical Music',
         title: 'Classical',
         description: 'Immerse yourself in the elegant and timeless world of classical music. From Beethoven to Bach, experience the beauty of orchestral compositions.',
-         link:'https://en.wikipedia.org/wiki/Classical_music'
+        link: 'https://en.wikipedia.org/wiki/Classical_music'
     },
     {
         imgSrc: 'assets/img/electronic.jpg',
         altText: 'Electronic Music',
         title: 'Electronic',
         description: 'Explore the innovative and dynamic world of electronic music. Discover the latest in EDM, house, techno, and more.',
-        link:'https://en.wikipedia.org/wiki/Electronic_music'
+        link: 'https://en.wikipedia.org/wiki/Electronic_music'
     }
 ];
 
@@ -74,45 +74,38 @@ const carouselData = [
 const playlists = [
     {
         title: "Sad Songs",
-        image: "assets/img/sadsongs.jpg",
-        video: "assets/video/cheerup.mp4"
+        image: "assets/img/sadsongs.jpg"
     },
     {
         title: "Chill Vibes",
-        image: "assets/img/chill.jpg",
-        video: "assets/video/cheerup.mp4"
+        image: "assets/img/chill.jpg"
     },
     {
         title: "Top Hits",
-        image: "assets/img/tophits.jpg",
-        video: "assets/video/cheerup.mp4"
+        image: "assets/img/tophits.jpg"
     },
     {
         title: "Workout",
-        image: "assets/img/workout.jpg",
-        video: "assets/video/cheerup.mp4"
+        image: "assets/img/workout.jpg"
     },
     {
         title: "Party",
-        image: "assets/img/party.png",
-        video: "assets/video/cheerup.mp4"
+        image: "assets/img/party.png"
     },
     {
         title: "Study",
-        image: "assets/img/study.webp",
-        video: "assets/video/cheerup.mp4"
+        image: "assets/img/study.webp"
     },
     {
         title: "Focus",
-        image: "assets/img/focus.jpg",
-        video: "assets/video/cheerup.mp4"
+        image: "assets/img/focus.jpg"
     },
     {
         title: "Sleep",
-        image: "assets/img/sleep.jpg",
-        video: "assets/video/cheerup.mp4"
+        image: "assets/img/sleep.jpg"
     }
 ];
+
 const videoData = [
     {
         videoSrc: 'assets/video/cheerup.mp4',
@@ -151,7 +144,47 @@ const videoData = [
         title: 'Dynamite'
     }
 ];
-
-
+const albums = [
+    {
+        title: "V-POP",
+        image: "assets/img/vpop.jpg",
+        video: "assets/video/dynamite.mp4"
+    },
+    {
+        title: "K-POP",
+        image: "assets/img/kpop.jpg",
+        video: "assets/video/cheerup.mp4"
+    },
+    {
+        title: "US-UK",
+        image: "assets/img/usuk.png",
+        video: "assets/video/cheerup.mp4"
+    },
+    {
+        title: "J-POP",
+        image: "assets/img/jpop.jpg",
+        video: "assets/video/cheerup.mp4"
+    },
+    {
+        title: "C-POP",
+        image: "assets/img/cpop.jpg",
+        video: "assets/video/cheerup.mp4"
+    },
+    {
+        title: "T-POP",
+        image: "assets/img/tpop.jpg",
+        video: "assets/video/cheerup.mp4"
+    },
+    {
+        title: "ROCK",
+        image: "assets/img/rock.jpg",
+        video: "assets/video/cheerup.mp4"
+    },
+    {
+        title: "HIP-HOP",
+        image: "assets/img/hiphop.jpg",
+        video: "assets/video/cheerup.mp4"
+    }
+];
 
 
