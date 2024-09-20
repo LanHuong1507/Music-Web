@@ -728,7 +728,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const playlistImageDiv = document.createElement('div');
         playlistImageDiv.classList.add('playlist-image');
-        playlistImageDiv.dataset.playlistIndex = playlists.indexOf(playlist);
 
         const img = document.createElement('img');
         img.src = playlist.image;
@@ -748,42 +747,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         return li;
     }
-    function showSongs(playListIndex) {
-        const songListContainer = document.querySelector('.song-list-playlist');
-        songListContainer.innerHTML = '';
 
-        const closeButton = document.createElement('button');
-        closeButton.classList.add('close-song');
-        closeButton.textContent = 'Close';
-        closeButton.onclick = function () {
-            const audioElements = document.querySelectorAll('audio');
-            audioElements.forEach(audio => {
-                audio.pause(); 
-                audio.currentTime = 0; 
-            });
-            songListContainer.style.display = 'none'; 
-        };
-
-        songListContainer.appendChild(closeButton);
-
-        const playlist = playlists[playListIndex];
-        playlist.songs.forEach(song => {
-            const songItem = document.createElement('div');
-            songItem.classList.add('song-item');
-
-            const songTitle = document.createElement('span');
-            songTitle.textContent = song.title;
-
-            const audio = document.createElement('audio');
-            audio.src = song.audio;
-            audio.controls = true; 
-
-            songItem.appendChild(songTitle);
-            songItem.appendChild(audio);
-            songListContainer.appendChild(songItem);
-        });
-        songListContainer.style.display = 'block'; 
-    }
     function displayPlaylists() {
         const playlistContainer = document.querySelector('.recommended-playlists .playlist');
         playlists.forEach(playlist => {
@@ -795,8 +759,6 @@ document.addEventListener('DOMContentLoaded', function () {
     function handlePlaylistImageClicks() {
         document.querySelectorAll('.playlist-image').forEach(playlist => {
             playlist.addEventListener('click', function (e) {
-                const playlistIndex = this.dataset.playlistIndex;
-                showSongs(playlistIndex);
                 document.querySelectorAll('.playlist-image').forEach(item => {
                     item.classList.remove('active');
                 });
@@ -928,123 +890,69 @@ document.addEventListener('DOMContentLoaded', function () {
     handleShowAllButton();
 });
 /*Show ablum */
+let activeAlbum = null;
+document.querySelectorAll('.album-image').forEach(album => {
+    album.addEventListener('click', function (e) {
+        if (e.target.classList.contains('song-item')) {
+            return;
+        }
+        if (activeAlbum === this) {
+            return;
+        }
+        document.querySelectorAll('.album-image').forEach(item => {
+            item.classList.remove('active');
+            const trackList = item.parentElement.querySelector('.track-list');
+            if (trackList) {
+                trackList.style.display = 'none';
+            }
+        });
+        this.classList.add('active');
+        activeAlbum = this;
+        const trackList = this.parentElement.querySelector('.track-list');
+        if (trackList) {
+            trackList.style.display = 'block';
+        }
+
+        e.stopPropagation();
+    });
+});
+
+document.querySelectorAll('.song-item').forEach(song => {
+    song.addEventListener('click', function (e) {
+        playSong(this.dataset.audioPath);
+        e.stopPropagation();
+    });
+});
+document.addEventListener('click', function () {
+    if (activeAlbum) {
+        activeAlbum.classList.remove('active');
+        const trackList = activeAlbum.parentElement.querySelector('.track-list');
+        if (trackList) {
+            trackList.style.display = 'none';
+        }
+        activeAlbum = null;
+    }
+});
 document.addEventListener('DOMContentLoaded', function () {
-
-
-    function createAlbumItem(album) {
-        const li = document.createElement('li');
-
-        const albumImageDiv = document.createElement('div');
-        albumImageDiv.classList.add('album-image');
-        albumImageDiv.dataset.albumIndex = albums.indexOf(album); 
-
-        const img = document.createElement('img');
-        img.src = album.image;
-        img.alt = album.title;
-        img.classList.add('album-cover');
-        albumImageDiv.appendChild(img);
-
-        const playIcon = document.createElement('i');
-        playIcon.classList.add('fa', 'fa-play', 'play-icon');
-        albumImageDiv.appendChild(playIcon);
-
-        const h4 = document.createElement('h4');
-        h4.textContent = album.title;
-
-        li.appendChild(albumImageDiv);
-        li.appendChild(h4);
-
-        return li;
-    }
-
-    function displayAlbums() {
-        const albumContainer = document.querySelector('.albums .album-list');
-        albums.forEach(album => {
-            const albumItem = createAlbumItem(album);
-            albumContainer.appendChild(albumItem);
-        });
-    }
-    function showSongs(albumIndex) {
-        const songListContainer = document.querySelector('.song-list-album');
-        songListContainer.innerHTML = '';
-
-        const closeButton = document.createElement('button');
-        closeButton.classList.add('close-song');
-        closeButton.textContent = 'Close';
-        closeButton.onclick = function () {
-            const audioElements = document.querySelectorAll('audio');
-            audioElements.forEach(audio => {
-                audio.pause(); 
-                audio.currentTime = 0; 
-            });
-            songListContainer.style.display = 'none'; 
-        };
-
-        songListContainer.appendChild(closeButton);
-
-        const album = albums[albumIndex];
-        album.songs.forEach(song => {
-            const songItem = document.createElement('div');
-            songItem.classList.add('song-item');
-
-            const songTitle = document.createElement('span');
-            songTitle.textContent = song.title;
-
-            const audio = document.createElement('audio');
-            audio.src = song.audio;
-            audio.controls = true; 
-
-            songItem.appendChild(songTitle);
-            songItem.appendChild(audio);
-            songListContainer.appendChild(songItem);
-        });
-        songListContainer.style.display = 'block'; 
-    }
-
-
-    function handleAlbumImageClicks() {
-        document.querySelectorAll('.album-image').forEach(album => {
-            album.addEventListener('click', function (e) {
-                const albumIndex = this.dataset.albumIndex; 
-                showSongs(albumIndex); 
-
-                document.querySelectorAll('.album-image').forEach(item => {
-                    item.classList.remove('active');
-                });
-                this.classList.add('active');
-                e.stopPropagation();
-            });
-        });
-
-        document.addEventListener('click', function () {
-            document.querySelectorAll('.album-image').forEach(item => {
-                item.classList.remove('active');
-            });
-            document.querySelector('.song-list').style.display = 'none'; 
-        });
-    }
 
     function handleShowAllButton() {
         const showAllBtn = document.querySelector('#show-all-albums');
-        const albumList = document.querySelector('.albums ul');
+        const playlistList = document.querySelector('.albums ul');
 
-        function toggleAlbums() {
-            if (albumList.classList.contains('show-all')) {
-                albumList.classList.remove('show-all');
+        function togglePlaylists() {
+            if (playlistList.classList.contains('show-all')) {
+                playlistList.classList.remove('show-all');
                 showAllBtn.textContent = 'Show All';
             } else {
-                albumList.classList.add('show-all');
+                playlistList.classList.add('show-all');
                 showAllBtn.textContent = 'Show Less';
             }
         }
 
         showAllBtn.addEventListener('click', function (e) {
             e.preventDefault();
-            toggleAlbums();
+            togglePlaylists();
         });
     }
-
-    displayAlbums();
-    handleAlbumImageClicks();
     handleShowAllButton();
 });
