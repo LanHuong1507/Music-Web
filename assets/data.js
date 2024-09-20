@@ -74,35 +74,75 @@ const carouselData = [
 const playlists = [
     {
         title: "Sad Songs",
-        image: "assets/img/sadsongs.jpg"
+        image: "assets/img/sadsongs.jpg",
+        songs: [
+            { title: "Cheer Up", audio: "assets/songs/cheerup.mp3",image:"assets/img/twice.jpg" },
+            { title: "Flower", audio: "assets/songs/flower.mp3",image:"assets/img/kpop.jpg" },
+            { title: "Ditto", audio: "assets/songs/ditto.mp3",image:"assets/img/kpop.jpg" }
+        ]
     },
     {
         title: "Chill Vibes",
-        image: "assets/img/chill.jpg"
+        image: "assets/img/chill.jpg",
+        songs: [
+            { title: "Cheer Up", audio: "assets/songs/cheerup.mp3",image:"assets/img/twice.jpg" },
+            { title: "Flower", audio: "assets/songs/flower.mp3",image:"assets/img/kpop.jpg" },
+            { title: "Ditto", audio: "assets/songs/ditto.mp3",image:"assets/img/kpop.jpg" }
+        ]
     },
     {
         title: "Top Hits",
-        image: "assets/img/tophits.jpg"
+        image: "assets/img/tophits.jpg",
+        songs: [
+            { title: "Cheer Up", audio: "assets/songs/cheerup.mp3",image:"assets/img/twice.jpg" },
+            { title: "Flower", audio: "assets/songs/flower.mp3",image:"assets/img/kpop.jpg" },
+            { title: "Ditto", audio: "assets/songs/ditto.mp3",image:"assets/img/kpop.jpg" }
+        ]
     },
     {
         title: "Workout",
-        image: "assets/img/workout.jpg"
+        image: "assets/img/workout.jpg",
+        songs: [
+            { title: "Cheer Up", audio: "assets/songs/cheerup.mp3",image:"assets/img/twice.jpg" },
+            { title: "Flower", audio: "assets/songs/flower.mp3",image:"assets/img/kpop.jpg" },
+            { title: "Ditto", audio: "assets/songs/ditto.mp3",image:"assets/img/kpop.jpg" }
+        ]
     },
     {
         title: "Party",
-        image: "assets/img/party.png"
+        image: "assets/img/party.png",
+        songs: [
+            { title: "Cheer Up", audio: "assets/songs/cheerup.mp3",image:"assets/img/twice.jpg" },
+            { title: "Flower", audio: "assets/songs/flower.mp3",image:"assets/img/kpop.jpg" },
+            { title: "Ditto", audio: "assets/songs/ditto.mp3",image:"assets/img/kpop.jpg" }
+        ]
     },
     {
         title: "Study",
-        image: "assets/img/study.webp"
+        image: "assets/img/study.jpeg",
+        songs: [
+            { title: "Cheer Up", audio: "assets/songs/cheerup.mp3",image:"assets/img/twice.jpg" },
+            { title: "Flower", audio: "assets/songs/flower.mp3",image:"assets/img/kpop.jpg" },
+            { title: "Ditto", audio: "assets/songs/ditto.mp3",image:"assets/img/kpop.jpg" }
+        ]
     },
     {
         title: "Focus",
-        image: "assets/img/focus.jpg"
+        image: "assets/img/focus.jpg",
+        songs: [
+            { title: "Cheer Up", audio: "assets/songs/cheerup.mp3",image:"assets/img/twice.jpg" },
+            { title: "Flower", audio: "assets/songs/flower.mp3",image:"assets/img/kpop.jpg" },
+            { title: "Ditto", audio: "assets/songs/ditto.mp3",image:"assets/img/kpop.jpg" }
+        ]
     },
     {
         title: "Sleep",
-        image: "assets/img/sleep.jpg"
+        image: "assets/img/sleep.jpg",
+        songs: [
+            { title: "Cheer Up", audio: "assets/songs/cheerup.mp3",image:"assets/img/twice.jpg" },
+            { title: "Flower", audio: "assets/songs/flower.mp3",image:"assets/img/kpop.jpg" },
+            { title: "Ditto", audio: "assets/songs/ditto.mp3",image:"assets/img/kpop.jpg" }
+        ]
     }
 ];
 
@@ -148,42 +188,47 @@ const albums = [
     {
         title: "V-POP",
         image: "assets/img/vpop.jpg",
-        video: "assets/video/dynamite.mp4"
+        songs: [
+            { title: "ABCD", audio: "assets/songs/abcd.mp3",image:"assets/img/nayeon.webp" },
+            { title: "POP", audio: "assets/songs/pop.mp3",image:"assets/img/nayeon.webp" },
+            { title: "Yes Or Yes", audio: "assets/songs/yesoryes.mp3",image:"assets/img/twice.jpg" }
+        ]
     },
     {
         title: "K-POP",
         image: "assets/img/kpop.jpg",
-        video: "assets/video/cheerup.mp4"
+        songs: [
+            { title: "Cheer Up", audio: "assets/songs/cheerup.mp3",image:"assets/img/twice.jpg" },
+            { title: "Flower", audio: "assets/songs/flower.mp3",image:"assets/img/kpop.jpg" },
+            { title: "Ditto", audio: "assets/songs/ditto.mp3",image:"assets/img/kpop.jpg" }
+        ]
     },
     {
         title: "US-UK",
         image: "assets/img/usuk.png",
-        video: "assets/video/cheerup.mp4"
+        songs: [
+            { title: "ABCD", audio: "assets/songs/abcd.mp3",image:"assets/img/nayeon.webp" },
+            { title: "POP", audio: "assets/songs/pop.mp3",image:"assets/img/nayeon.webp" },
+            { title: "Yes Or Yes", audio: "assets/songs/yesoryes.mp3",image:"assets/img/twice.jpg" }
+        ]
     },
     {
         title: "J-POP",
         image: "assets/img/jpop.jpg",
-        video: "assets/video/cheerup.mp4"
+        songs: [
+            { title: "Cheer Up", audio: "assets/songs/cheerup.mp3",image:"assets/img/twice.jpg" },
+            { title: "Flower", audio: "assets/songs/flower.mp3",image:"assets/img/kpop.jpg" },
+            { title: "Ditto", audio: "assets/songs/ditto.mp3",image:"assets/img/kpop.jpg" }
+        ]
     },
     {
         title: "C-POP",
         image: "assets/img/cpop.jpg",
-        video: "assets/video/cheerup.mp4"
-    },
-    {
-        title: "T-POP",
-        image: "assets/img/tpop.jpg",
-        video: "assets/video/cheerup.mp4"
-    },
-    {
-        title: "ROCK",
-        image: "assets/img/rock.jpg",
-        video: "assets/video/cheerup.mp4"
-    },
-    {
-        title: "HIP-HOP",
-        image: "assets/img/hiphop.jpg",
-        video: "assets/video/cheerup.mp4"
+        songs: [
+            { title: "ABCD", audio: "assets/songs/abcd.mp3",image:"assets/img/nayeon.webp" },
+            { title: "POP", audio: "assets/songs/pop.mp3",image:"assets/img/nayeon.webp" },
+            { title: "Yes Or Yes", audio: "assets/songs/yesoryes.mp3",image:"assets/img/twice.jpg" }
+        ]
     }
 ];
 
