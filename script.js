@@ -508,7 +508,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     player.addEventListener('timeupdate', updatePlaybackTime);
+    player.addEventListener('ended', () => {
+        console.log('Track ended. Playing next track.');
+
+        if (currentTrackIndex >= 0 && currentTrackIndex < trackLinks.length - 1) {
+            playTrack(currentTrackIndex + 1);
+        } else {
+            console.log("No more tracks to play.");
+        }
+    });
 });
+
 
 /*Tab Navigation In Hero Section*/
 let currentTab = 0;
@@ -753,16 +763,16 @@ document.addEventListener('DOMContentLoaded', function () {
             e.stopPropagation();
 
             if (activeAlbum === li) {
-                return; 
+                return;
             }
             if (activeAlbum) {
                 const prevSongListContainer = activeAlbum.querySelector('.song-list-container');
-                prevSongListContainer.innerHTML = ''; 
-                stopSong(); 
+                prevSongListContainer.innerHTML = '';
+                stopSong();
             }
             songListContainer.innerHTML = '';
             createSongList(playlist, songListContainer);
-            activeAlbum = li; 
+            activeAlbum = li;
         });
 
         return li;
@@ -791,11 +801,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 if (playButton.textContent === 'Stop') {
                     stopSong();
-                    return; 
+                    return;
                 }
 
                 if (currentAudio) {
-                    stopSong(); 
+                    stopSong();
                 }
 
                 playSong(song.audio, playButton);
@@ -818,24 +828,24 @@ document.addEventListener('DOMContentLoaded', function () {
         currentPlayButton = playButton;
 
         currentAudio.addEventListener('ended', function () {
-            resetPlayButton(); 
-            currentAudio = null; 
+            resetPlayButton();
+            currentAudio = null;
         });
     }
 
     function stopSong() {
         if (currentAudio) {
             currentAudio.pause();
-            currentAudio.currentTime = 0; 
+            currentAudio.currentTime = 0;
             resetPlayButton();
-            currentAudio = null; 
+            currentAudio = null;
         }
     }
 
     function resetPlayButton() {
         if (currentPlayButton) {
             currentPlayButton.textContent = 'Play';
-            currentPlayButton = null; 
+            currentPlayButton = null;
         }
     }
 
@@ -871,8 +881,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (activeAlbum && !activeAlbum.contains(e.target)) {
             const activeSongListContainer = activeAlbum.querySelector('.song-list-container');
             activeSongListContainer.innerHTML = '';
-            activeAlbum = null; 
-            stopSong(); 
+            activeAlbum = null;
+            stopSong();
         }
     });
 
