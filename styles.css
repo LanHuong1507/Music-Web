@@ -1213,32 +1213,78 @@ label {
 .songs ul li a:hover {
     color: blue;
 }
+
 /*Album Song*/
-.track-list{
+.track-list {
+    background-color: #f5f5f5;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.track-item {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 0;
-    margin: 0;
-    list-style: none;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease;
     width: 100%;
 }
-.track-list li{
-    flex-direction: row;
+
+.track-list li {
+    width: 100%;
+    display: block;
 }
+
+.track-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.track-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 15px;
+}
+
+.track-link {
+    flex: 1;
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.track-link:hover {
+    color: #0077b6;
+}
+
+.track-title {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
 /*Video Popup*/
 .video-popup {
     display: none;
     position: fixed;
     top: 0;
-    left: 0; 
+    left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(128, 128, 128, 0.8);
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    display: flex; 
+    display: flex;
     flex-direction: column;
 }
 
@@ -1247,7 +1293,7 @@ label {
     width: 90%;
     max-width: 800px;
     padding: 20px;
-    background-color: #333; 
+    background-color: #333;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
     border-radius: 10px;
     display: flex;
@@ -1386,6 +1432,49 @@ label {
     border-radius: 8px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     object-fit: cover;
+}
+.song-list-container {
+    display: none; 
+    margin-top: 10px;
+    width: 100%;
+}
+
+.song-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.song-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.song-item span {
+    flex-grow: 1;
+    font-size: 1rem;
+}
+
+.play-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.play-button:hover {
+    background-color: #0056b3;
 }
 
 /*News*/
@@ -1565,44 +1654,45 @@ label {
 .control-btn i {
     font-size: 16px;
 }
+
 .volume-control {
     display: flex;
-    align-items: center; 
+    align-items: center;
     gap: 10px;
     margin-left: 10px;
     flex-direction: column;
 }
 
 #volume-slider {
-    -webkit-appearance: none; 
-    width: 100px; 
+    -webkit-appearance: none;
+    width: 100px;
     height: 8px;
-    background: #ddd; 
-    border-radius: 5px; 
-    cursor: pointer; 
-    margin-left: 5px; 
+    background: #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px;
 }
 
 #volume-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     background: #0077b6;
-    width: 12px; 
-    height: 12px; 
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 #volume-slider::-moz-range-thumb {
     background: #0077b6;
-    width: 12px; 
-    height: 12px; 
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     cursor: pointer;
 }
 
 .volume-control label {
-    color: #0077b6; 
-    font-size: 14px; 
+    color: #0077b6;
+    font-size: 14px;
 }
 
 /*Footer*/
@@ -2090,7 +2180,7 @@ label {
         font-size: 18px;
     }
 
-    .volume-control{
+    .volume-control {
         margin-top: 5px;
         flex-direction: row;
         width: 100%;

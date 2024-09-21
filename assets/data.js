@@ -85,9 +85,9 @@ const playlists = [
         title: "Chill Vibes",
         image: "assets/img/chill.jpg",
         songs: [
-            { title: "Cheer Up", audio: "assets/songs/cheerup.mp3",image:"assets/img/twice.jpg" },
-            { title: "Flower", audio: "assets/songs/flower.mp3",image:"assets/img/kpop.jpg" },
-            { title: "Ditto", audio: "assets/songs/ditto.mp3",image:"assets/img/kpop.jpg" }
+            { title: "ABCD", audio: "assets/songs/abcd.mp3",image:"assets/img/nayeon.jpg" },
+            { title: "POP", audio: "assets/songs/pop.mp3",image:"assets/img/nayeon.webp" },
+            { title: "132", audio: "assets/songs/132.mp3",image:"assets/img/twice.jpg" }
         ]
     },
     {
@@ -184,52 +184,3 @@ const videoData = [
         title: 'Dynamite'
     }
 ];
-const albums = [
-    {
-        title: "V-POP",
-        image: "assets/img/vpop.jpg",
-        songs: [
-            { title: "ABCD", audio: "assets/songs/abcd.mp3",image:"assets/img/nayeon.webp" },
-            { title: "POP", audio: "assets/songs/pop.mp3",image:"assets/img/nayeon.webp" },
-            { title: "Yes Or Yes", audio: "assets/songs/yesoryes.mp3",image:"assets/img/twice.jpg" }
-        ]
-    },
-    {
-        title: "K-POP",
-        image: "assets/img/kpop.jpg",
-        songs: [
-            { title: "Cheer Up", audio: "assets/songs/cheerup.mp3",image:"assets/img/twice.jpg" },
-            { title: "Flower", audio: "assets/songs/flower.mp3",image:"assets/img/kpop.jpg" },
-            { title: "Ditto", audio: "assets/songs/ditto.mp3",image:"assets/img/kpop.jpg" }
-        ]
-    },
-    {
-        title: "US-UK",
-        image: "assets/img/usuk.png",
-        songs: [
-            { title: "ABCD", audio: "assets/songs/abcd.mp3",image:"assets/img/nayeon.webp" },
-            { title: "POP", audio: "assets/songs/pop.mp3",image:"assets/img/nayeon.webp" },
-            { title: "Yes Or Yes", audio: "assets/songs/yesoryes.mp3",image:"assets/img/twice.jpg" }
-        ]
-    },
-    {
-        title: "J-POP",
-        image: "assets/img/jpop.jpg",
-        songs: [
-            { title: "Cheer Up", audio: "assets/songs/cheerup.mp3",image:"assets/img/twice.jpg" },
-            { title: "Flower", audio: "assets/songs/flower.mp3",image:"assets/img/kpop.jpg" },
-            { title: "Ditto", audio: "assets/songs/ditto.mp3",image:"assets/img/kpop.jpg" }
-        ]
-    },
-    {
-        title: "C-POP",
-        image: "assets/img/cpop.jpg",
-        songs: [
-            { title: "ABCD", audio: "assets/songs/abcd.mp3",image:"assets/img/nayeon.webp" },
-            { title: "POP", audio: "assets/songs/pop.mp3",image:"assets/img/nayeon.webp" },
-            { title: "Yes Or Yes", audio: "assets/songs/yesoryes.mp3",image:"assets/img/twice.jpg" }
-        ]
-    }
-];
-
-

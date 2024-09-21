@@ -721,8 +721,11 @@ document.addEventListener('DOMContentLoaded', function () {
     populateCarousel();
 });
 
-/*Recommended Playlists*/
-document.addEventListener('DOMContentLoaded', function () {
+/*Recommended Playlists*/document.addEventListener('DOMContentLoaded', function () {
+    let currentAudio = null;
+    let currentPlayButton = null; 
+    let activeAlbum = null;
+
     function createPlaylistItem(playlist) {
         const li = document.createElement('li');
 
@@ -735,42 +738,107 @@ document.addEventListener('DOMContentLoaded', function () {
         img.classList.add('playlist-cover');
         playlistImageDiv.appendChild(img);
 
-        const playIcon = document.createElement('i');
-        playIcon.classList.add('fa', 'fa-play', 'play-icon');
-        playlistImageDiv.appendChild(playIcon);
-
         const h4 = document.createElement('h4');
         h4.textContent = playlist.title;
 
         li.appendChild(playlistImageDiv);
         li.appendChild(h4);
 
+        const songListContainer = document.createElement('div');
+        songListContainer.classList.add('song-list-container');
+        li.appendChild(songListContainer); 
+
+        li.addEventListener('click', function (e) {
+            e.stopPropagation();
+            if (activeAlbum === li) {
+                return;
+            }
+            if (activeAlbum) {
+                const prevSongListContainer = activeAlbum.querySelector('.song-list-container');
+                prevSongListContainer.innerHTML = ''; 
+            }
+            songListContainer.innerHTML = ''; 
+            createSongList(playlist, songListContainer);
+            activeAlbum = li;
+        });
+
         return li;
+    }
+
+    function createSongList(playlist, container) {
+        container.innerHTML = '';
+
+        playlist.songs.forEach(song => {
+            const songDiv = document.createElement('div');
+            songDiv.classList.add('song-item');
+
+            const songImage = document.createElement('img');
+            songImage.src = song.image;
+            songImage.alt = song.title;
+
+            const songTitle = document.createElement('span');
+            songTitle.textContent = song.title;
+
+            const playButton = document.createElement('button');
+            playButton.textContent = 'Play';
+            playButton.classList.add('play-button');
+
+            playButton.addEventListener('click', function (e) {
+                e.stopPropagation();
+                if (playButton.textContent === 'Stop') {
+                    stopSong();
+                    return; 
+                }
+                if (currentAudio) {
+                    stopSong(); 
+                }
+                playSong(song.audio, playButton);
+            });
+
+            songDiv.appendChild(songImage);
+            songDiv.appendChild(songTitle);
+            songDiv.appendChild(playButton);
+            container.appendChild(songDiv); 
+        });
+
+        container.style.display = 'block';
+    }
+
+    function playSong(audioSrc, playButton) {
+        currentAudio = new Audio(audioSrc);
+        currentAudio.play();
+
+        playButton.textContent = 'Stop'; 
+        currentPlayButton = playButton;
+
+        currentAudio.addEventListener('ended', function () {
+            resetPlayButton(); 
+            currentAudio = null; 
+        });
+    }
+
+    function stopSong() {
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0; 
+            resetPlayButton(); 
+            currentAudio = null; 
+        }
+    }
+
+    function resetPlayButton() {
+        if (currentPlayButton) {
+            currentPlayButton.textContent = 'Play'; 
+            currentPlayButton = null; 
+        }
     }
 
     function displayPlaylists() {
         const playlistContainer = document.querySelector('.recommended-playlists .playlist');
+        playlistContainer.innerHTML = '';
         playlists.forEach(playlist => {
             const playlistItem = createPlaylistItem(playlist);
             playlistContainer.appendChild(playlistItem);
-        });
-    }
-
-    function handlePlaylistImageClicks() {
-        document.querySelectorAll('.playlist-image').forEach(playlist => {
-            playlist.addEventListener('click', function (e) {
-                document.querySelectorAll('.playlist-image').forEach(item => {
-                    item.classList.remove('active');
-                });
-                this.classList.add('active');
-                e.stopPropagation();
-            });
-        });
-
-        document.addEventListener('click', function () {
-            document.querySelectorAll('.playlist-image').forEach(item => {
-                item.classList.remove('active');
-            });
         });
     }
 
@@ -794,7 +862,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
     displayPlaylists();
-    handlePlaylistImageClicks();
     handleShowAllButton();
 });
 
@@ -889,16 +956,41 @@ document.addEventListener('DOMContentLoaded', function () {
     setupVideoPopup();
     handleShowAllButton();
 });
-/*Show ablum */
+/*Show Albums and Song in albums */
+function handleShowAllButton() {
+    const showAllBtn = document.querySelector('#show-all-albums');
+    const songList = document.querySelector('.albums ul');
+
+    function toggleVideos() {
+        if (songList.classList.contains('show-all')) {
+            songList.classList.remove('show-all');
+            showAllBtn.textContent = 'Show All';
+        } else {
+            songList.classList.add('show-all');
+            showAllBtn.textContent = 'Show Less';
+        }
+    }
+
+    showAllBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        toggleVideos();
+    });
+}
+
 let activeAlbum = null;
+
 document.querySelectorAll('.album-image').forEach(album => {
     album.addEventListener('click', function (e) {
+        // Prevent clicking on the song item from closing the album
         if (e.target.classList.contains('song-item')) {
             return;
         }
+        // Prevent re-clicking the same album from closing it
         if (activeAlbum === this) {
             return;
         }
+
+        // Hide all other albums' track lists
         document.querySelectorAll('.album-image').forEach(item => {
             item.classList.remove('active');
             const trackList = item.parentElement.querySelector('.track-list');
@@ -906,6 +998,8 @@ document.querySelectorAll('.album-image').forEach(album => {
                 trackList.style.display = 'none';
             }
         });
+
+        // Activate the current album and show its tracks
         this.classList.add('active');
         activeAlbum = this;
         const trackList = this.parentElement.querySelector('.track-list');
@@ -917,14 +1011,14 @@ document.querySelectorAll('.album-image').forEach(album => {
     });
 });
 
-document.querySelectorAll('.song-item').forEach(song => {
+document.querySelectorAll('.track-link').forEach(song => {
     song.addEventListener('click', function (e) {
-        playSong(this.dataset.audioPath);
+        playSong(this.dataset.audio);
         e.stopPropagation();
     });
 });
-document.addEventListener('click', function () {
-    if (activeAlbum) {
+document.addEventListener('click', function (e) {
+    if (activeAlbum && !e.target.closest('.album-image') && !e.target.closest('.track-list')) {
         activeAlbum.classList.remove('active');
         const trackList = activeAlbum.parentElement.querySelector('.track-list');
         if (trackList) {
@@ -933,26 +1027,4 @@ document.addEventListener('click', function () {
         activeAlbum = null;
     }
 });
-document.addEventListener('DOMContentLoaded', function () {
-
-    function handleShowAllButton() {
-        const showAllBtn = document.querySelector('#show-all-albums');
-        const playlistList = document.querySelector('.albums ul');
-
-        function togglePlaylists() {
-            if (playlistList.classList.contains('show-all')) {
-                playlistList.classList.remove('show-all');
-                showAllBtn.textContent = 'Show All';
-            } else {
-                playlistList.classList.add('show-all');
-                showAllBtn.textContent = 'Show Less';
-            }
-        }
-
-        showAllBtn.addEventListener('click', function (e) {
-            e.preventDefault();
-            togglePlaylists();
-        });
-    }
-    handleShowAllButton();
-});
+handleShowAllButton();
