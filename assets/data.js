@@ -95,17 +95,17 @@ const playlists = [
         image: "assets/img/tophits.jpg",
         songs: [
             { title: "Cheer Up", audio: "assets/songs/cheerup.mp3",image:"assets/img/twice.jpg" },
-            { title: "Flower", audio: "assets/songs/flower.mp3",image:"assets/img/kpop.jpg" },
-            { title: "Ditto", audio: "assets/songs/ditto.mp3",image:"assets/img/kpop.jpg" }
+            { title: "POP", audio: "assets/songs/pop.mp3",image:"assets/img/nayeon.jpg" },
+            { title: "Run Away", audio: "assets/songs/runaway.mp3",image:"assets/img/tzuyu.webp" }
         ]
     },
     {
         title: "Workout",
         image: "assets/img/workout.jpg",
         songs: [
-            { title: "Cheer Up", audio: "assets/songs/cheerup.mp3",image:"assets/img/twice.jpg" },
+            { title: "Bang * 3", audio: "assets/songs/bangbangbang.mp3",image:"assets/img/kpop.jpg" },
             { title: "Flower", audio: "assets/songs/flower.mp3",image:"assets/img/kpop.jpg" },
-            { title: "Ditto", audio: "assets/songs/ditto.mp3",image:"assets/img/kpop.jpg" }
+            { title: "Money", audio: "assets/songs/money.mp3",image:"assets/img/kpop.jpg" }
         ]
     },
     {
@@ -113,8 +113,8 @@ const playlists = [
         image: "assets/img/party.png",
         songs: [
             { title: "Cheer Up", audio: "assets/songs/cheerup.mp3",image:"assets/img/twice.jpg" },
-            { title: "Flower", audio: "assets/songs/flower.mp3",image:"assets/img/kpop.jpg" },
-            { title: "Ditto", audio: "assets/songs/ditto.mp3",image:"assets/img/kpop.jpg" }
+            { title: "Yes Or Yes", audio: "assets/songs/yesoryes.mp3",image:"assets/img/twice.jpg" },
+            { title: "Feel Special", audio: "assets/songs/feelspecial.mp3",image:"assets/img/twice.jpg" }
         ]
     },
     {
@@ -122,26 +122,26 @@ const playlists = [
         image: "assets/img/study.jpeg",
         songs: [
             { title: "Cheer Up", audio: "assets/songs/cheerup.mp3",image:"assets/img/twice.jpg" },
-            { title: "Flower", audio: "assets/songs/flower.mp3",image:"assets/img/kpop.jpg" },
-            { title: "Ditto", audio: "assets/songs/ditto.mp3",image:"assets/img/kpop.jpg" }
+            { title: "Spring Day", audio: "assets/songs/springday.mp3",image:"assets/img/kpop.jpg" },
+            { title: "H Y L T", audio: "assets/songs/howyoulikethat.mp3",image:"assets/img/kpop.jpg" }
         ]
     },
     {
         title: "Focus",
         image: "assets/img/focus.jpg",
         songs: [
-            { title: "Cheer Up", audio: "assets/songs/cheerup.mp3",image:"assets/img/twice.jpg" },
-            { title: "Flower", audio: "assets/songs/flower.mp3",image:"assets/img/kpop.jpg" },
-            { title: "Ditto", audio: "assets/songs/ditto.mp3",image:"assets/img/kpop.jpg" }
+            { title: "Bang *3", audio: "assets/songs/bangbangbang.mp3",image:"assets/img/twice.jpg" },
+            { title: "Haru Haru", audio: "assets/songs/haruharu.mp3",image:"assets/img/kpop.jpg" },
+            { title: "H Y L T", audio: "assets/songs/howyoulikethat.mp3",image:"assets/img/kpop.jpg" }
         ]
     },
     {
         title: "Sleep",
         image: "assets/img/sleep.jpg",
         songs: [
-            { title: "Cheer Up", audio: "assets/songs/cheerup.mp3",image:"assets/img/twice.jpg" },
-            { title: "Flower", audio: "assets/songs/flower.mp3",image:"assets/img/kpop.jpg" },
-            { title: "Ditto", audio: "assets/songs/ditto.mp3",image:"assets/img/kpop.jpg" }
+            { title: "Feel Special", audio: "assets/songs/feelspecial.mp3",image:"assets/img/twice.jpg" },
+            { title: "1 3 2", audio: "assets/songs/132.mp3",image:"assets/img/kpop.jpg" },
+            { title: "H I H", audio: "assets/songs/hih.mp3",image:"assets/img/tzuyu.webp" }
         ]
     }
 ];
