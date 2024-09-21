@@ -2214,5 +2214,22 @@ label {
         width: 50%;
         max-width: none;
     }
+    .song-item {
+        flex-direction: column;
+        align-items: center;
+        align-items: center;
+        width: 100%;
+    }
+    .song-item img {
+        margin-top: 5px;
+        width: 100%;
+        max-width: 100px;
+        height: auto;
+    }
+    .song-item span {
+        margin-top: 5px;
+        text-align: center;
+        font-size: 14px;
+    }
 
 }
